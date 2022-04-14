@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.26.1",
-    "nodemon": "^2.0.15",
+    "bootstrap": "^5.1.3",
+    "googleapis": "^100.0.0",
     "react": "^18.0.0",
     "react-bootstrap": "^2.2.3",
     "react-dom": "^18.0.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
