@@ -11,7 +11,7 @@ const SideBarNav = (props) => {
     return (
         <>
     
-    <Drawer className="drawer" { ...props }>
+    <Drawer className="drawerLeft" { ...props }>
             {/* <Drawer.Toggle onClick={ handleToggle } /> */}
 
             {/* <Collapse in={ open }> */}

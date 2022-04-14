@@ -1,0 +1,9 @@
+.drawerRight{
+    background-color: rgb(124, 145, 214);
+    margin-right: 10px;
+    margin-left: auto;
+    align-self: flex-end;
+    padding-top: 2rem;
+    text-align: center;
+    max-width: 15%;
+}

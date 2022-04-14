@@ -1,7 +1,6 @@
-.drawer{
+.drawerLeft{
     background-color: aquamarine;
     max-width: 8%;
-    padding-left: 1rem;
     padding-top: 2rem;
     text-align: center;
 }

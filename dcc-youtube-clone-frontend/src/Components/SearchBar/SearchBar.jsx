@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, FormControl, FormGroup } from "react-bootstrap";
+import { Form, Button, FormControl, InputGroup } from "react-bootstrap";
 import './SearchBar.css'
 
 const SearchBar = (props) => {
@@ -9,16 +9,17 @@ const SearchBar = (props) => {
 
   return (
     <div>
-      <Form
+      <Form size="lg"
         onSubmit={(event) => {
           onSubmit();
+          
         }}>
-        <FormGroup size='lg'>
+        <InputGroup className="mb-3">
           <FormControl type='text' placeholder='Search' />
-          <Button variant='primary' type='submit'>
+          <Button variant='primary' type='submit' >
             Submit
           </Button>
-        </FormGroup>
+        </InputGroup>
       </Form>
     </div>
   );
