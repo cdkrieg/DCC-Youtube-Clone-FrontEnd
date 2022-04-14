@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, FormControl, FormGroup } from "react-bootstrap";
+import './SearchBar.css'
 
 const SearchBar = (props) => {
   function onSubmit(event) {
@@ -12,10 +13,12 @@ const SearchBar = (props) => {
         onSubmit={(event) => {
           onSubmit();
         }}>
-        <Form.Control className="control" type='text' placeholder='Search' />
-        <Button className="button" variant='primary' type='submit'>
-          Submit
-        </Button>
+        <FormGroup size='lg'>
+          <FormControl type='text' placeholder='Search' />
+          <Button variant='primary' type='submit'>
+            Submit
+          </Button>
+        </FormGroup>
       </Form>
     </div>
   );
