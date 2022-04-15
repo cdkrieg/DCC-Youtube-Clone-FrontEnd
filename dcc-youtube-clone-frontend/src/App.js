@@ -5,7 +5,7 @@ import IFrame from "./Components/IFrame";
 import NavBar from "./Components/NavBar/NavBar";
 import SideBarLeft from "./Components/SideBars/SideBarLeft";
 import googleAPIKey from "./config";
-import RelatedVideos from "./Components/SideBars/RelatedVideos";
+import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
 
 function App() {
   const [search, setSearch] = useState();

@@ -11,3 +11,8 @@
     margin-left: 5px;
     margin-bottom: 20px;
 }
+
+.videos{
+    display: flex;
+    flex-wrap: wrap;
+}
