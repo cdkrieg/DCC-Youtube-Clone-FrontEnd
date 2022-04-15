@@ -1,1 +1,19 @@
 
+
+.form{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    height: 25px;
+}
+.form > input{
+    flex: 1;
+    border: none;
+}
+#button{
+    width: 50px;
+    background-color: aliceblue;
+    border-left: 1px solid lightgrey;
+    color: grey;
+}

@@ -1,19 +1,19 @@
 import React from "react";
-import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import "./NavBar.css";
 import SearchBar from "../SearchBar/SearchBar";
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 const NavBar = (props) => {
   return (
-    <div>
-      <Navbar className='navbar navbar-default'>
-        <div className='container'>
-          <label>DCC Youtube Clone</label>
-        </div>
-        <div className='search'>
-          <SearchBar />
-        </div>
-      </Navbar>
+    <div className='navBar'>
+      <div className='container'>
+        <MenuIcon />
+        <label>DCC Youtube Clone</label>
+      </div>
+      <div className='search'>
+        <SearchBar setSearch={props.setSearch}/>
+      </div>
     </div>
   );
 };

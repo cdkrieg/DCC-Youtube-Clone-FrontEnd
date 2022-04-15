@@ -1,34 +1,16 @@
 
 import 'react-bootstrap-drawer/lib/style.css';
-import { Drawer, } from 'react-bootstrap-drawer';
 import './SideBarNav.css'
 import React from 'react';
 
 
-const SideBarNav = (props) => {
+function SideBarNav({selected, title}) {
 
 
     return (
-        <>
-    
-    <Drawer className="drawerLeft" { ...props }>
-            {/* <Drawer.Toggle onClick={ handleToggle } /> */}
-
-            {/* <Collapse in={ open }> */}
-                <Drawer.Overflow>
-                    <Drawer.ToC>
-                        <Drawer.Header href="/">Home</Drawer.Header>
-
-                        <Drawer.Nav>
-                            <br />
-                            <Drawer.Item href="/">Categories</Drawer.Item>
-                        </Drawer.Nav>
-                    </Drawer.ToC>
-                </Drawer.Overflow>
-            {/* </Collapse> */}
-        </Drawer>
-          
-        </>
+        <div className={`sideBarNav ${selected && "selected"}`}>
+            <h2 className='sideBarNav-Title'>{title}</h2>
+        </div>
         );
   };
   

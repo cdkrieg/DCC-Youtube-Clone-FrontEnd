@@ -1,21 +1,27 @@
-.navbar {
-  display:flex;
-  grid-template-columns: left right;
-  width: 95vw;
-  font-weight: bold;
-  font-style: italic;
-  background-color: rgb(207, 237, 162);
-  height: 4rem;
+.navBar {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: aliceblue;
 }
 .container {
-  margin-left: 5%;
   color: blue;
-  text-align: left;
   font-size: large;
 }
-.search{
-    margin-right: 10%;
-    margin-left: auto;
+.search {
+  display: flex;
+  align-items: left;
+  width: 40%;
+  margin-right: 20%;
+  height: 25px;
 }
-
+label {
+  padding-left: 20px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: larger;
+}
