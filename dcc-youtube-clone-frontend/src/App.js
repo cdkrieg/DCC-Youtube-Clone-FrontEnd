@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import "./App.css";
-import Comments from "./Components/Comments";
-import IFrame from "./Components/IFrame";
+// import Comments from "./Components/Comments";
+// import IFrame from "./Components/IFrame";
 import NavBar from "./Components/NavBar/NavBar";
 import SideBarLeft from "./Components/SideBars/SideBarLeft";
-import googleAPIKey from "./config";
-import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
+// import googleAPIKey from "./config";
+// import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import VideoCard from "./Components/Video/VideoCard";
+import { Spinner } from "react-bootstrap";
+const VideoCard = React.lazy(()=>import("./Components/Video/VideoCard"));
 
 function App() {
   const [search, setSearch] = useState();
@@ -26,17 +27,21 @@ function App() {
         setSearch={setSearch}
         search={search}
         setSearchResult={setSearchResult}
+        searchResult={searchResult}
       />
 
       <div className='home'>
         <div className='page'>
           <SideBarLeft className='sideBarLeft' />
-          {searchResult && (
+          <Suspense fallback={<Spinner/>}>
+            {searchResult &&
             <VideoCard
               setSelectedVideo={setSelectedVideo}
-              videos={searchResult.data.items}
+              
+              videos={searchResult.items}
             />
-          )}
+          }
+          </Suspense>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const NavBar = (props) => {
         <label>DCC Youtube Clone</label>
       </div>
       <div className='search'>
-        <SearchBar setSearch={props.setSearch} setSearchResult={props.setSearchResult}/>
+        <SearchBar setSearch={props.setSearch} setSearchResult={props.setSearchResult} searchResult={props.searchResult}/>
         
       </div>
     </div>

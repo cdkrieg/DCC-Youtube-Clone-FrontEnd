@@ -6,7 +6,7 @@ import getYoutubeData from "../Routes/RoutesAxios";
 import { Link } from "react-router-dom";
 const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
-  const searchURl = `https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${googleAPIKey}&part=snippet&type=video&maxResults=5`;
+  const searchURl = 'https://www.googleapis.com/youtube/v3/search?';
 
   // function searchURLExists(){
   //   if(searchText !== "")
@@ -14,14 +14,20 @@ const SearchBar = (props) => {
   //   return null
   // }
 
-  function submit(event) {
+  async function submit(event) {
     event.preventDefault();
-    console.log(searchText);
+    let searchString = searchURl+
+    'key='+googleAPIKey+
+    '&q='+searchText+
+    '&maxResults='+8+
+    '&type=video'+
+    '&part=snippet'
 
     try {
-      let result = getYoutubeData(searchURl);
-      result.then(result => {props.setSearchResult(result)})
-      setSearchText("");
+      let result = await getYoutubeData(searchString);
+      props.setSearchResult(result)
+      setSearchText("")
+    
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +42,9 @@ const SearchBar = (props) => {
         onChange={(event) => {
           setSearchText(event.target.value);
         }}
+        onKeyUp={(event)=>{if(event.key === 'Enter')
+          submit(event)
+      }}
       />
       <a href="/search">
         <SearchIcon
