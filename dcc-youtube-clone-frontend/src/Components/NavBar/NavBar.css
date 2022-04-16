@@ -1,5 +1,6 @@
 .navBar {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
   padding: 20px;
@@ -15,7 +16,7 @@
 .search {
   display: flex;
   align-items: left;
-  width: 40%;
+  width: 30%;
   margin-right: 20%;
   height: 25px;
 }

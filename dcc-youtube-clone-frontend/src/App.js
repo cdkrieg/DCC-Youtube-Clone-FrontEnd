@@ -6,40 +6,39 @@ import NavBar from "./Components/NavBar/NavBar";
 import SideBarLeft from "./Components/SideBars/SideBarLeft";
 import googleAPIKey from "./config";
 import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
-import ForYou from "./Components/ForYou/ForYou";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import VideoCard from "./Components/Video/VideoCard";
 
 function App() {
   const [search, setSearch] = useState();
-  const [searchResult, setSearchResult] = useState({});
+  const [searchResult, setSearchResult] = useState();
+  const [selectedVideo, setSelectedVideo] = useState();
   // const googleURL = `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${googleAPIKey}`;
 
   useEffect(() => {
-    console.log(`Search is ${search}`);
-    console.log(`Search Result is ${searchResult}`);
-  }, [search,searchResult]);
+    
+  }, [search, searchResult]);
 
   return (
     <div className='App'>
-      <Router>
-        <NavBar className='navBar' setSearch={setSearch} search={search} setSearchResult={setSearchResult}/>
-        <Routes>
-          <Route
-            exact
-            path='/'
-            element={
-              <div className='home'>
-                <div className='page'>
-                  <SideBarLeft className='sideBarLeft' />
-                  <ForYou />
-                </div>
-              </div>
-            }></Route>
-          <Route>
+      <NavBar
+        className='navBar'
+        setSearch={setSearch}
+        search={search}
+        setSearchResult={setSearchResult}
+      />
 
-          </Route>
-        </Routes>
-      </Router>
+      <div className='home'>
+        <div className='page'>
+          <SideBarLeft className='sideBarLeft' />
+          {searchResult && (
+            <VideoCard
+              setSelectedVideo={setSelectedVideo}
+              videos={searchResult.data.items}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

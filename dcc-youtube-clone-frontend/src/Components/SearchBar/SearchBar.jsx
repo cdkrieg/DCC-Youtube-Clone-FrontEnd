@@ -3,10 +3,10 @@ import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import googleAPIKey from "../../config";
 import getYoutubeData from "../Routes/RoutesAxios";
-
+import { Link } from "react-router-dom";
 const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
-  const searchURl = `https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${googleAPIKey}`;
+  const searchURl = `https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${googleAPIKey}&part=snippet&type=video&maxResults=5`;
 
   // function searchURLExists(){
   //   if(searchText !== "")
@@ -20,7 +20,7 @@ const SearchBar = (props) => {
 
     try {
       let result = getYoutubeData(searchURl);
-      result.then(result => {props.setSearchResult(JSON.stringify(result))})
+      result.then(result => {props.setSearchResult(result)})
       setSearchText("");
     } catch (error) {
       console.log(error);
@@ -36,19 +36,15 @@ const SearchBar = (props) => {
         onChange={(event) => {
           setSearchText(event.target.value);
         }}
-        onSubmit={(event) => {
-          submit(event);
-        }}
       />
-      {/* <a href={"/search"}> */}
+      <a href="/search">
         <SearchIcon
           id='button'
           type='button'
           onClick={(event) => {
             submit(event);
-          }}
-        />
-      {/* </a> */}
+          }}/>
+          </a>
     </div>
   );
 };

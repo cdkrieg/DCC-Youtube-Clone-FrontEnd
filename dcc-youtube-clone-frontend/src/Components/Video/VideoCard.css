@@ -1,0 +1,16 @@
+.videoCard{
+    flex: .9;
+    background-color: rgb(245, 247, 250);
+    padding: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* .videoThumbNailImage{
+    height: 100px;
+    width: 200px;
+}
+.videoTitle{
+    display: flex;
+    padding: 20px;
+    margin: 10px;
+} */

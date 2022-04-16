@@ -1,6 +1,6 @@
 import React from 'react'
 import { Avatar } from '@mui/material';
-import './VideoThumbNail.css'
+// import './VideoThumbNail.css'
 
 function VideoThumbNail(props) {
     const {image, title, channel, views, channelPic} = props;

@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios';
+import '../../config'
+import googleAPIKey from '../../config';
 
 
 
@@ -7,10 +9,18 @@ import axios from 'axios';
  async function getYoutubeData(url){
      try {
          let result = await axios.get(url)
-         return result.data
+         return result
      } catch (error) {
          console.log('Error getting data from YoutTube')
      }
  }
 
- export default getYoutubeData
+ export default axios.create({
+
+    baseURL: 'https://www.googleapis/yputube/v3/',
+    params:{
+        part: 'snippet',
+        maxResults: 8,
+        key: googleAPIKey
+    }
+ })
