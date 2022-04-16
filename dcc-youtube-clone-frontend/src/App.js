@@ -6,27 +6,49 @@ import NavBar from "./Components/NavBar/NavBar";
 import SideBarLeft from "./Components/SideBars/SideBarLeft";
 import googleAPIKey from "./config";
 import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
+import ForYou from "./Components/ForYou/ForYou";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState();
-  const googleURL = `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${googleAPIKey}`;
+  const [searchResult, setSearchResult] = useState({});
+  // const googleURL = `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${googleAPIKey}`;
 
   useEffect(() => {
     console.log(`Search is ${search}`);
-  }, [search]);
+    console.log(`Search Result is ${searchResult}`);
+  }, [search,searchResult]);
 
   return (
     <div className='App'>
-      <NavBar className='navBar' setSearch={setSearch} />
-      <div className='page'>
-        <SideBarLeft className='sideBarLeft' />
-        <RelatedVideos />
-      </div>
+      <Router>
+        <NavBar className='navBar' setSearch={setSearch} search={search} setSearchResult={setSearchResult}/>
+        <Routes>
+          <Route
+            exact
+            path='/'
+            element={
+              <div className='home'>
+                <div className='page'>
+                  <SideBarLeft className='sideBarLeft' />
+                  <ForYou />
+                </div>
+              </div>
+            }></Route>
+          <Route>
 
-      {/* <IFrame className='iFrame' googleURL={googleURL} /> */}
-      <Comments className='comments' />
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
 
 export default App;
+
+{
+  //TODO
+  /* <RelatedVideos />
+
+<Comments className='comments' /> */
+}

@@ -1,8 +1,16 @@
+import React from 'react'
 import axios from 'axios';
 
-const baseURL = "";
 
-const searchURL = "https://www.googleapis.com/youtube/v3/search"
 
 //TODO: determine CRUD methods
- 
+ async function getYoutubeData(url){
+     try {
+         let result = await axios.get(url)
+         return result.data
+     } catch (error) {
+         console.log('Error getting data from YoutTube')
+     }
+ }
+
+ export default getYoutubeData

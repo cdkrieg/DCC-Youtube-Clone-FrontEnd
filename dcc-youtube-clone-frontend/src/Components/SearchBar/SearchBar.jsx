@@ -1,38 +1,54 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
+import googleAPIKey from "../../config";
+import getYoutubeData from "../Routes/RoutesAxios";
 
 const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
+  const searchURl = `https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${googleAPIKey}`;
+
+  // function searchURLExists(){
+  //   if(searchText !== "")
+  //     return searchURl
+  //   return null
+  // }
 
   function submit(event) {
     event.preventDefault();
     console.log(searchText);
+
     try {
-      props.setSearch(searchText);
+      let result = getYoutubeData(searchURl);
+      result.then(result => {props.setSearchResult(JSON.stringify(result))})
       setSearchText("");
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   }
 
   return (
     <div className='form'>
-  
-        <input
-          type='text'
-          placeholder='Search'
-          value={searchText}
-          onChange={(event) => {
-            setSearchText(event.target.value);
+      <input
+        type='text'
+        placeholder='Search'
+        value={searchText}
+        onChange={(event) => {
+          setSearchText(event.target.value);
+        }}
+        onSubmit={(event) => {
+          submit(event);
+        }}
+      />
+      {/* <a href={"/search"}> */}
+        <SearchIcon
+          id='button'
+          type='button'
+          onClick={(event) => {
+            submit(event);
           }}
-          onSubmit={((event) => {
-            submit(event)
-          })}
         />
-        <SearchIcon id='button' type='submit' />
+      {/* </a> */}
     </div>
   );
 };

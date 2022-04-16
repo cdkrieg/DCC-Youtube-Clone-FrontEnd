@@ -1,12 +1,12 @@
 import React from 'react';
-import './RelatedVideos.css'
-import VideoThumbNail from '../VideoThumbNail/VideoThumbNail.jsx';
+import './ForYou.css'
+import VideoThumbNail from '../VideoThumbNail/VideoThumbNail';
 
-const RelatedVideos = () => {
+const ForYou = () => {
 
     return ( 
-        <div className="relatedVideos">
-            <h2>Related Videos</h2>
+        <div className="forYou">
+            <h2>For You Videos</h2>
             <div className="videos">
                 <VideoThumbNail />
                 <VideoThumbNail />
@@ -18,4 +18,4 @@ const RelatedVideos = () => {
      );
 }
  
-export default RelatedVideos;
+export default ForYou;

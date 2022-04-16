@@ -4,6 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import MenuIcon from '@mui/icons-material/Menu';
 
 
+
 const NavBar = (props) => {
   return (
     <div className='navBar'>
@@ -12,7 +13,8 @@ const NavBar = (props) => {
         <label>DCC Youtube Clone</label>
       </div>
       <div className='search'>
-        <SearchBar setSearch={props.setSearch}/>
+        <SearchBar setSearch={props.setSearch} setSearchResult={props.setSearchResult}/>
+        
       </div>
     </div>
   );
