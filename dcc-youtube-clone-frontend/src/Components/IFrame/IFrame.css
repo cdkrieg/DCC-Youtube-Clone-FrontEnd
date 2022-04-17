@@ -1,0 +1,10 @@
+.iFrame{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+.iFrame > h2{
+    text-align: center;
+    color: blue;
+}

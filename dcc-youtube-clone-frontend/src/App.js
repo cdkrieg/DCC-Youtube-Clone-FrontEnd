@@ -1,21 +1,22 @@
 import React, { useState, useEffect, Suspense } from "react";
 import "./App.css";
 // import Comments from "./Components/Comments";
-// import IFrame from "./Components/IFrame";
+import IFrame from "./Components/IFrame/IFrame";
 import NavBar from "./Components/NavBar/NavBar";
-import SideBarLeft from "./Components/SideBars/SideBarLeft";
+// import SideBarLeft from "./Components/SideBars/SideBarLeft";
 // import googleAPIKey from "./config";
 // import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
 import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import ForYou from "./Components/ForYou/ForYou";
-const VideoCard = React.lazy(() => import("./Components/Video/VideoCard"));
+const VideoCard = React.lazy(() => import("./Components/VideoCard/VideoCard"));
 
 
 function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
+  const [forYouVideos, setForYouVideos] = useState();
   // const googleURL = `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${googleAPIKey}`;
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
             path='/'
             className='home'
             element={<div>
-          <ForYou /></div>}
+          <ForYou setForYouVideos={setForYouVideos} forYouVideos={forYouVideos}/></div>}
           />
 
           <Route
@@ -55,6 +56,9 @@ function App() {
               </Suspense>
             }
           />
+          <Route path='/video'  element={<IFrame />}/>
+
+          
         </Routes>
       </div>
     </div>
