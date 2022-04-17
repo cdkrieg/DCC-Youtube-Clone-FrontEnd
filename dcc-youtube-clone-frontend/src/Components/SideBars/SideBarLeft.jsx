@@ -11,7 +11,6 @@ function SideBarLeft(props) {
     return (
         <div className="sideBarLeft" >
             <SideBarNav selected title={"Home"} />
-            <SideBarNav title={"Trending"} />
             
         </div>
         );

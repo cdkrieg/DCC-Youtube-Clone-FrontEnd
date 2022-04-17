@@ -13,7 +13,7 @@
   color: blue;
   font-size: large;
 }
-.search {
+.searchBar {
   display: flex;
   align-items: left;
   width: 30%;
@@ -25,4 +25,14 @@ label {
   font-weight: bold;
   font-style: italic;
   font-size: larger;
+}
+#home{
+  font-weight: normal;
+  font-style: normal;
+  padding-right: 20px;
+  color: blue;
+}
+#home:hover{
+  font-weight: bold;
+  background-color: rgb(233, 231, 231);
 }

@@ -1,20 +1,23 @@
 import React from "react";
 import "./NavBar.css";
 import SearchBar from "../SearchBar/SearchBar";
-import MenuIcon from '@mui/icons-material/Menu';
-
-
+import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (
     <div className='navBar'>
       <div className='container'>
-        <MenuIcon />
         <label>DCC Youtube Clone</label>
       </div>
-      <div className='search'>
-        <SearchBar setSearch={props.setSearch} setSearchResult={props.setSearchResult} searchResult={props.searchResult}/>
-        
+      <Link to="/">
+      <label id="home">Home</label>
+      </Link>
+      <div className='searchBar'>
+        <SearchBar
+          setSearch={props.setSearch}
+          setSearchResult={props.setSearchResult}
+          searchResult={props.searchResult}
+        />
       </div>
     </div>
   );

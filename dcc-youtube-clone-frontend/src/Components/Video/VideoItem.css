@@ -3,8 +3,8 @@
 .videoItem{
     display: flex;
     flex-wrap: wrap;
-    height: 200px;
-    width: 300px;
+    height: 250px;
+    width: 270px;
 }
 .videoImg{
     height: 150px;
@@ -17,3 +17,7 @@
     font-size: 12px;
     max-width: 200px;
 } 
+.videoItem:hover{
+    border: 1px solid lightgray;
+    background-color: lightgray;
+}

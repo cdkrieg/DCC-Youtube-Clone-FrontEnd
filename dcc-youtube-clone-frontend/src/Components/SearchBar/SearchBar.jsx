@@ -4,9 +4,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import googleAPIKey from "../../config";
 import getYoutubeData from "../Routes/RoutesAxios";
 import { Link } from "react-router-dom";
+import BaseURL from "../BaseURL";
+import {useNavigate} from 'react-router-dom'
+
 const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
-  const searchURl = 'https://www.googleapis.com/youtube/v3/search?';
+  const navigate = useNavigate();
 
   // function searchURLExists(){
   //   if(searchText !== "")
@@ -16,7 +19,7 @@ const SearchBar = (props) => {
 
   async function submit(event) {
     event.preventDefault();
-    let searchString = searchURl+
+    let searchString = BaseURL+
     'key='+googleAPIKey+
     '&q='+searchText+
     '&maxResults='+8+
@@ -27,6 +30,7 @@ const SearchBar = (props) => {
       let result = await getYoutubeData(searchString);
       props.setSearchResult(result)
       setSearchText("")
+      navigate('/search')
     
     } catch (error) {
       console.log(error);
