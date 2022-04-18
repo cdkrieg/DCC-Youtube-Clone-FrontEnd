@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import ForYou from "./Components/ForYou/ForYou";
 const VideoCard = React.lazy(() => import("./Components/VideoCard/VideoCard"));
-
+const SideBarLeft = React.lazy(() =>import ("./Components/SideBars/SideBarLeft"));
 
 function App() {
   const [search, setSearch] = useState();
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className='App'>
       <NavBar
-        className='navBar'
+        className='app-navBar'
         setSearch={setSearch}
         search={search}
         setSearchResult={setSearchResult}
@@ -34,17 +34,14 @@ function App() {
       />
       <div className='page'>
         <Routes>
-          <Route
-            exact
-            path='/'
-            className='home'
-            element={<div>
-          <ForYou setForYouVideos={setForYouVideos} forYouVideos={forYouVideos}/></div>}
-          />
+          <Route exact path='/' className='app-home' element={<div></div>} />
+          {/* <ForYou 
+          setForYouVideos={setForYouVideos} forYouVideos={forYouVideos}/></div>}
+          /> */}
 
           <Route
             path='/search'
-            className='search'
+            className='app-search'
             element={
               <Suspense fallback={<Spinner />}>
                 {searchResult && (
@@ -56,9 +53,24 @@ function App() {
               </Suspense>
             }
           />
-          <Route path='/video'  element={<IFrame />}/>
-
-          
+          <Route
+            path='/video'
+            element={
+              <div className='app-video'>
+                <Suspense fallback={<Spinner />}>
+                {searchResult && (
+                  <SideBarLeft
+                    setSelectedVideo={setSelectedVideo}
+                    videos={searchResult.items}
+                  />
+                  
+                )}
+                </Suspense>
+                <IFrame selectedVideo={selectedVideo} />
+              </div>
+              
+            }
+          />
         </Routes>
       </div>
     </div>

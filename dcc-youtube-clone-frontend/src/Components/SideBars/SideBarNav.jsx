@@ -9,7 +9,7 @@ function SideBarNav({selected, title}) {
 
     return (
         <div className={`sideBarNav ${selected && "selected"}`}>
-            <h2 className='sideBarNav-Title'>{title}</h2>
+            <p className='sideBarNav-Title'>{title}</p>
         </div>
         );
   };

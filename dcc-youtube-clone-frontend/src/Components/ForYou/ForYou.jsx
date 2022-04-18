@@ -31,9 +31,29 @@ useEffect(() => {
 //         }
 //       }
 //   setVideos(getForYouVideos());
+setVideos(getForYouVideos())
+}, [])
 
-}, [props.setSelectedVideo])
-
+async function getForYouVideos() {
+            let searchString = BaseURL+
+            'key='+googleAPIKey+
+            '&videoCategoryID=44'+
+            '&maxResults='+8+
+            '&type=video'+
+            '&part=snippet'
+        
+            try {
+              let result = await getYoutubeData(searchString);
+              setVideos(result)
+              console.log(videos)
+              return <VideoCard setSelectedVideo={props.setSelectedVideo}
+              videos={result}/>
+            
+            } catch (error) {
+              console.log(error);
+            }
+          }
+      
 
     
       
@@ -44,7 +64,7 @@ useEffect(() => {
             <h2>For You Videos</h2>
             <div className="videos">
                 <Suspense fallback={<Spinner />}>
-                {/* {videos} */}
+                {videos}
                 <div></div>
                     </Suspense>
               
