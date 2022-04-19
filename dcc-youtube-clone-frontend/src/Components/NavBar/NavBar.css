@@ -1,9 +1,8 @@
 .navBar {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 1.5rem;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -11,28 +10,30 @@
 }
 .container {
   color: blue;
-  font-size: large;
-}
-.searchBar {
-  display: flex;
-  align-items: left;
   width: 30%;
-  margin-right: 20%;
-  height: 25px;
 }
-label {
-  padding-left: 20px;
+
+.container > h3 {
+  padding-left: 2rem;
   font-weight: bold;
   font-style: italic;
-  font-size: larger;
 }
-#home{
-  font-weight: normal;
-  font-style: normal;
-  padding-right: 20px;
+#home {
+  padding-right: 10px;
+  margin-right: 20px;
   color: blue;
+  font-size: large;
+  width: 20%;
+  text-align: center;
+  align-items: center;
 }
-#home:hover{
+#home:hover {
   font-weight: bold;
   background-color: rgb(233, 231, 231);
+}
+.searchBar {
+  align-items: left;
+  width: 25%;
+  margin-right: 20%;
+  height: 2rem;
 }

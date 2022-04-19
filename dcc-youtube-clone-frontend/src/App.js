@@ -1,23 +1,23 @@
 import React, { useState, useEffect, Suspense } from "react";
-import "./App.css";
-// import Comments from "./Components/Comments";
-import IFrame from "./Components/IFrame/IFrame";
-import NavBar from "./Components/NavBar/NavBar";
-// import SideBarLeft from "./Components/SideBars/SideBarLeft";
-// import googleAPIKey from "./config";
-// import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
 import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import ForYou from "./Components/ForYou/ForYou";
+
+// import ForYou from "./Components/ForYou/ForYou";
+// import Comments from "./Components/Comments";
+import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
+import NavBar from "./Components/NavBar/NavBar";
+import "./App.css";
+
 const VideoCard = React.lazy(() => import("./Components/VideoCard/VideoCard"));
-const SideBarLeft = React.lazy(() =>import ("./Components/SideBars/SideBarLeft"));
+const RelatedVideos = React.lazy(() =>
+  import("./Components/RelatedVideos/RelatedVideos")
+);
 
 function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
-  const [forYouVideos, setForYouVideos] = useState();
-  // const googleURL = `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${googleAPIKey}`;
+  // const [forYouVideos, setForYouVideos] = useState();
 
   useEffect(() => {
     if (selectedVideo) console.log(selectedVideo);
@@ -34,10 +34,18 @@ function App() {
       />
       <div className='page'>
         <Routes>
-          <Route exact path='/' className='app-home' element={<div></div>} />
-          {/* <ForYou 
-          setForYouVideos={setForYouVideos} forYouVideos={forYouVideos}/></div>}
-          /> */}
+          <Route
+            exact
+            path='/'
+            element={
+              <div className='app-home'>
+                <h2>Home Page</h2>
+                <br/>
+                <hr/>
+                <h1>U-Toob</h1>
+              </div>
+            }
+          />
 
           <Route
             path='/search'
@@ -57,18 +65,17 @@ function App() {
             path='/video'
             element={
               <div className='app-video'>
-                <Suspense fallback={<Spinner />}>
-                {searchResult && (
-                  <SideBarLeft
-                    setSelectedVideo={setSelectedVideo}
-                    videos={searchResult.items}
-                  />
-                  
-                )}
+                <Suspense className="container-xsm" fallback={<Spinner />}>
+                  {searchResult && (
+                    <RelatedVideos
+                      selectedVideo={selectedVideo}
+                      setSelectedVideo={setSelectedVideo}
+                      videos={searchResult.items}
+                    />
+                  )}
                 </Suspense>
-                <IFrame selectedVideo={selectedVideo} />
+                <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
               </div>
-              
             }
           />
         </Routes>
@@ -80,8 +87,6 @@ function App() {
 export default App;
 
 {
-  //TODO
-  /* <RelatedVideos />
-
+  /*
 <Comments className='comments' /> */
 }

@@ -1,21 +1,20 @@
 
 
-.form{
-    width: 60%;
-    display: flex;
+.input-group{
+  display: flex;
+  flex: .8;
     align-items: center;
     border: 1px solid black;
-    height: 30px;
+    height: 2.5rem;
 }
-.form > input{
-    flex: 1;
+.input-group > input{
     border: none;
     font-size: medium;
 }
 #button{
-    width: 50px;
     background-color: aliceblue;
-    border-left: 1px solid lightgrey;
+    border-left: 1px solid rgb(23, 23, 23);
     color: grey;
     height: 27px;
+    width: 40px;
 }

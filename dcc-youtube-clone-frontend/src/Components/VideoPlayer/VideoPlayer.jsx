@@ -1,16 +1,17 @@
 import React from 'react';
-import './IFrame.css'
 
-const IFrame = (props) => {
+
+const VideoPlayer = (props) => {
     const source = `https://www.youtube.com/embed/${props.selectedVideo.id.videoId}`
+    
     return ( 
         <div className='iFrame'>
             <h2>{props.selectedVideo.snippet.title}</h2>    
-                <iframe width="500" height="375" title='YouTube Video' 
-                src={source} />
+                <iframe width="700" height="500" title='YouTube Video' 
+                className='iframe' src={source} allowFullScreen allow='autoplay'/>
 
         </div>
      );
 }
  
-export default IFrame;
+export default VideoPlayer;

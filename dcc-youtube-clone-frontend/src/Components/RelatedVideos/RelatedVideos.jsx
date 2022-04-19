@@ -1,21 +1,14 @@
-import React from 'react';
-import './RelatedVideos.css'
-import VideoThumbNail from '../VideoThumbNail/VideoThumbNail.jsx';
+import React from "react";
+import VideoCard from "../VideoCard/VideoCard";
 
-const RelatedVideos = () => {
+function RelatedVideos({ videos, setSelectedVideo }) {
 
-    return ( 
-        <div className="relatedVideos">
-            <h2>Related Videos</h2>
-            <div className="videos">
-                <VideoThumbNail />
-                <VideoThumbNail />
-                <VideoThumbNail />
-                <VideoThumbNail />
-                
-            </div>
-        </div>
-     );
+  return (
+    <div className='sideBarLeft'>
+      <h5>Related Videos</h5>
+      <VideoCard setSelectedVideo={setSelectedVideo} videos={videos} />
+    </div>
+  );
 }
- 
+
 export default RelatedVideos;

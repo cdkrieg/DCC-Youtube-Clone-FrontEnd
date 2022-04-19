@@ -1,25 +1,25 @@
 import React from "react";
-import "./NavBar.css";
-import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+
+import SearchBar from "../SearchBar/SearchBar";
+import "./NavBar.css";
 
 const NavBar = (props) => {
   return (
-    <div className='navBar'>
+    <nav className='navBar' role='navigation'>
       <div className='container'>
-        <label>DCC Youtube Clone</label>
+        <h4>DCC U-Toob Clone</h4>
       </div>
-      <Link to="/">
-      <label id="home">Home</label>
+      <Link to='/' id='home'>
+        <label >Home</label>
       </Link>
-      <div className='searchBar'>
-        <SearchBar
-          setSearch={props.setSearch}
-          setSearchResult={props.setSearchResult}
-          searchResult={props.searchResult}
-        />
-      </div>
-    </div>
+      <SearchBar
+        className='searchBar'
+        setSearch={props.setSearch}
+        setSearchResult={props.setSearchResult}
+        searchResult={props.searchResult}
+      />
+    </nav>
   );
 };
 

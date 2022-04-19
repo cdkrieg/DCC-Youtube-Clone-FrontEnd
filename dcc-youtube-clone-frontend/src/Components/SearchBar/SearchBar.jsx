@@ -1,21 +1,16 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
-import SearchIcon from "@mui/icons-material/Search";
-import googleAPIKey from "../../config";
-import getYoutubeData from "../Routes/RoutesAxios";
-import { Link } from "react-router-dom";
-import BaseURL from "../BaseURL";
 import {useNavigate} from 'react-router-dom'
+import SearchIcon from "@mui/icons-material/Search";
+import getYoutubeData from "../Routes/RoutesAxios";
+
+import BaseURL from "../BaseURL";
+import googleAPIKey from "../../config";
+import "./SearchBar.css";
+
 
 const SearchBar = (props) => {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
-
-  // function searchURLExists(){
-  //   if(searchText !== "")
-  //     return searchURl
-  //   return null
-  // }
 
   async function submit(event) {
     event.preventDefault();
@@ -38,10 +33,11 @@ const SearchBar = (props) => {
   }
 
   return (
-    <div className='form'>
+    <div className='input-group input-group-sm mb-3'>
       <input
         type='text'
         placeholder='Search'
+        className="form-control"
         value={searchText}
         onChange={(event) => {
           setSearchText(event.target.value);
