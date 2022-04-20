@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
 // import ForYou from "./Components/ForYou/ForYou";
-// import Comments from "./Components/Comments";
+import Comment from "./Components/Comment/Comment.jsx";
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
 import NavBar from "./Components/NavBar/NavBar";
 import "./App.css";
@@ -17,6 +17,7 @@ function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
+  const commentList = [{id: 1, comment:"this is the first comment", like: false, dislike: false}, {id: 2, comment:"this is the second comment", like: false, dislike: true}]
   // const [forYouVideos, setForYouVideos] = useState();
 
   useEffect(() => {
@@ -75,6 +76,7 @@ function App() {
                   )}
                 </Suspense>
                 <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
+                <Comment />
               </div>
             }
           />
