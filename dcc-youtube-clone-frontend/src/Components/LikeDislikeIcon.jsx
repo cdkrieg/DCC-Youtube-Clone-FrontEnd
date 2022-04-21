@@ -1,71 +1,102 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "./Routes/RoutesAxios";
 import {
   ThumbDownOffAlt,
   ThumbDownAlt,
   ThumbUpOffAlt,
   ThumbUpAlt,
 } from "@mui/icons-material";
+import { comments } from "../dummyComments";
 
 const LikeDislikeIcon = (props) => {
+    const [likeButton, setLikeButton]= useState(props.obj.like)
+    const [dislikeButton, setDislikeButton] = useState(props.obj.dislike)
+    const [update, setUpdate] = useState(false)
+    const forceUpdate = React.useCallback(()=> setUpdate(!update), [])
+useEffect(() => {
+    
+    updateLikeDislike(props.obj)
+}, [likeButton,dislikeButton])
+
+async function updateLikeDislike(obj){
+    try {
+        let result = await Axios.updateComments(obj._id,{
+            videoId: obj.videoId,
+            body: obj.body,
+            like: likeButton,
+            dislike: dislikeButton,
+            replies: []
+        })
+        console.log("Update complete")
+        forceUpdate();
+    } catch (error) {
+        console.log("Error updating Like/Dislike: "+error)
+    }
+}
+
   function changeLikeDislike(event, button) {
     event.preventDefault();
-    if (button === ThumbUpOffAlt) {
-      props.obj.like = true;
-      props.obj.dislike = false;
+    if (button === "ThumbUpOffAlt") {
+       setLikeButton(true);
+      setDislikeButton(false);
+      forceUpdate()
       console.log(
-        `Like is: ${props.obj.like} and dislike is: ${props.obj.dislike}`
+        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
       );
     }
-    if (button === ThumbUpAlt) {
-      props.obj.like = false;
+    if (button === "ThumbUpAlt") {
+      setLikeButton(false)
+      forceUpdate()
       console.log(
-        `Like is: ${props.obj.like} and dislike is: ${props.obj.dislike}`
+        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
       );
     }
-    if (button === ThumbDownOffAlt) {
-      props.obj.dislike = true;
-      props.obj.like = false;
+    if (button === "ThumbDownOffAlt") {
+      setDislikeButton(true);
+      setLikeButton(false);
+      forceUpdate()
       console.log(
-        `Like is: ${props.obj.like} and dislike is: ${props.obj.dislike}`
+        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
       );
     }
-    if (button === ThumbDownAlt) {
-      props.obj.dislike = false;
+    if (button === "ThumbDownAlt") {
+      setDislikeButton(false);
+      forceUpdate()
       console.log(
-        `Like is: ${props.obj.like} and dislike is: ${props.obj.dislike}`
+        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
       );
     }
   }
 
-  if (props.obj.like === true)
+  if (likeButton === true)
     return (
       <div>
         <ThumbUpAlt
           type='button'
           onClick={(event) => {
-            changeLikeDislike(event,ThumbUpAlt);
+            changeLikeDislike(event,"ThumbUpAlt");
           }}
         />
         <ThumbDownOffAlt
           type='button'
           onClick={(event) => {
-            changeLikeDislike(event, ThumbDownOffAlt);
+            changeLikeDislike(event, "ThumbDownOffAlt");
           }}
         />
       </div>
     );
-  else if (props.obj.dislike === true)
+  else if (dislikeButton === true)
     return (
       <div>
         <ThumbUpOffAlt
           onClick={(event) => {
-            changeLikeDislike(event, ThumbUpOffAlt);
+            changeLikeDislike(event, "ThumbUpOffAlt");
           }}
         />
         <ThumbDownAlt
           type='button'
           onClick={(event) => {
-            changeLikeDislike(event, ThumbDownAlt);
+            changeLikeDislike(event, "ThumbDownAlt");
           }}
         />
       </div>
@@ -76,13 +107,13 @@ const LikeDislikeIcon = (props) => {
         <ThumbUpOffAlt
           type='button'
           onClick={(event) => {
-            changeLikeDislike(event, ThumbUpOffAlt);
+            changeLikeDislike(event, "ThumbUpOffAlt");
           }}
         />
         <ThumbDownOffAlt
           type='button'
           onClick={(event) => {
-            changeLikeDislike(event, ThumbDownOffAlt);
+            changeLikeDislike(event, "ThumbDownOffAlt");
           }}
         />
       </div>

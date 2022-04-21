@@ -72,7 +72,7 @@ function App() {
                   )}
                 </Suspense>
                 <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
-                <Comment selectedVideo={selectedVideo}/>
+                <Comment selectedVideo={selectedVideo} setSelectedVideo={setSelectedVideo}/>
               </div>
             }
           />

@@ -6,15 +6,17 @@ import dummyComments from "../../dummyComments";
 
 import CommentList from "../Comment/CommentList";
 
-const Comment = ({ selectedVideo }) => {
+const Comment = ({ selectedVideo, setSelectedVideo }) => {
   const [returnedComments, setReturnedComments] = useState();
   const [isLoading, setIsloading] = useState(true);
+  const [update, setUpdate] = useState(false)
+  const forceUpdate = React.useCallback(()=> setUpdate(!update), [])
 
   useEffect(() => {
     let result = getVideoComments(selectedVideo.id.videoId)
       .then((result) => setReturnedComments(result))
       .then(() => setIsloading(false));
-  }, [selectedVideo]);
+  }, [selectedVideo, update]);
 
   async function getVideoComments(videoId) {
     let comments = await Axios.getComments(videoId);
@@ -29,7 +31,8 @@ const Comment = ({ selectedVideo }) => {
   }
   return (
     <div>
-      <CommentForm comments={dummyComments} />
+        <h3>Comments</h3>
+      <CommentForm comments={returnedComments} selectedVideo={selectedVideo} forceUpdate={forceUpdate}/>
       <CommentList comments={returnedComments} />
     </div>
   );

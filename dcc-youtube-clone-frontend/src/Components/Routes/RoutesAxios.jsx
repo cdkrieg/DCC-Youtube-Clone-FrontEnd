@@ -18,7 +18,6 @@ const baseURl = 'http://localhost:3007/api/'
      try {
          let response = await axios.get(baseURl+"comments/?"+videoId)
          if(response){
-             console.log(response.data)
              return response.data
          }
      } catch (error) {
@@ -30,7 +29,9 @@ const baseURl = 'http://localhost:3007/api/'
     try {
         let response = await axios.put(baseURl+"comments/"+id, obj)
         if(response){
+            console.log(response.data)
             return response.data
+           
         }
     } catch (error) {
        console.log('Error updating comments: ' + error)
@@ -38,8 +39,9 @@ const baseURl = 'http://localhost:3007/api/'
  }
  async function addComments(obj){
     try {
-        let response = await axios.post(baseURl+"comments/", obj,{"content-type":"application/json"})
+        let response = await axios.post(baseURl+"comments", obj,{"content-type":"application/json"})
         if(response){
+            console.log(response.data)
             return response.data
         }
     } catch (error) {
