@@ -11,9 +11,9 @@ const CommentList = (props) => {
           props.comments.map((comment) => {
             return (
               <div key={comment.id}>
-                <li>
+                <li style={{"fontSize":"14px"}}>
                   {comment.body}
-                  <div className='text-muted'>{comment.dateAdded}</div>
+                  <div className='text-muted' style={{"fontSize": "10px","fontStyle":"italic"}}>{comment.dateAdded}</div>
                   <span>
                     {" "}<LikeDislikeIcon obj={comment} forceUpdate={props.forceUpdate}/>
                     <ReplyForm id={comment.id} />{" "}

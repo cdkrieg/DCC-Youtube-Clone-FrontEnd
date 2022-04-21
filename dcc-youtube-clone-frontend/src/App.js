@@ -38,8 +38,10 @@ function App() {
             path='/'
             element={
               <div className='app-home'>
-
-                <h1>Welcome to U-Toob</h1>
+                <div><h1>Welcome to U-Toob</h1></div>
+                
+                <div><h3>Click on the search bar above to begin your journey!</h3></div>
+                
               </div>
             }
           />
@@ -72,7 +74,7 @@ function App() {
                   )}
                 </Suspense>
                 <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
-                <Comment selectedVideo={selectedVideo} setSelectedVideo={setSelectedVideo}/>
+                <Comment id="comments" selectedVideo={selectedVideo} setSelectedVideo={setSelectedVideo}/>
               </div>
             }
           />

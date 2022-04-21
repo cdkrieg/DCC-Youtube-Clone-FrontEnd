@@ -7,7 +7,7 @@ const ReplyForm = (props) => {
 
   function submit(event,id) {
     event.preventDefault();
-    
+
   }
 
   return (
@@ -17,8 +17,10 @@ const ReplyForm = (props) => {
       onSubmit={(event) => {
         submit(event);
       }}>
-        <button hidden={!buttonValue} type="button" value={buttonValue} onClick={()=>{setButtonValue(!buttonValue)}}>Reply</button>
+        <button style={{"border":"none"}}
+        hidden={!buttonValue} type="button" value={buttonValue} onClick={()=>{setButtonValue(!buttonValue)}}>Reply</button>
       <TextareaAutosize
+      autoFocus
       hidden={buttonValue}
         className='textArea'
         maxRows={3}

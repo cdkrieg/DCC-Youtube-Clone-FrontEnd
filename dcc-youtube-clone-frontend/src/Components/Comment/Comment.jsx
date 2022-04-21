@@ -30,8 +30,8 @@ const Comment = ({ selectedVideo, setSelectedVideo }) => {
     );
   }
   return (
-    <div>
-        <h3>Comments</h3>
+    <div id="comments">
+        <h4>Comments</h4>
       <CommentForm comments={returnedComments} selectedVideo={selectedVideo} forceUpdate={forceUpdate}/>
       <CommentList comments={returnedComments} />
     </div>

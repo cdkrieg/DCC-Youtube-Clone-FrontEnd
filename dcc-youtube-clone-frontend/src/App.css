@@ -6,16 +6,19 @@
 }
 .app-home {
   display: flex;
-  flex: 1;
+width: 100vw;
+height: 100vh;
+  align-content: center;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   z-index: 5;
   background-color: rgb(26, 26, 26);
 }
 .app-home > h2,
-h1 {
+h1, h3 {
   text-align: center;
   color: aliceblue;
+  margin: 25px
 }
 .app-search {
   display: flex;
@@ -34,8 +37,13 @@ align-items: center;
 }
 
 .sideBarLeft{
-  max-width: 25vw;
+  max-width: 20vw;
   max-height: 100vh;
+  overflow-y: auto;
+}
+.sideBarLeft > h5{
+text-align: center;
+color: blue;
 }
 .iFrame{
   align-self: center;
@@ -44,9 +52,23 @@ align-items: center;
 
 .iFrame > h2{
   max-width: fit-content;
+  margin-left: 1.5rem;
 }
 .iframe{
   justify-content: center;
-  margin-left: auto;
+  margin-left: 1.5rem;
   margin-right: auto;
+  max-width: 50vw;
+}
+#comments{
+  max-width: 30vw;
+  max-height: 100vh;
+  overflow: auto;
+  margin-left: 20px;
+  ;
+}
+#comments > h4{
+  text-align: center;
+  color: blue
+
 }

@@ -9,7 +9,7 @@ const CommentForm = ({comments, selectedVideo, forceUpdate}) => {
 
   function submit(event) {
     event.preventDefault();
-
+    
     try {
       Axios.addComments({
         videoId:selectedVideo.id.videoId,
@@ -24,7 +24,7 @@ const CommentForm = ({comments, selectedVideo, forceUpdate}) => {
     setTimeout(()=> {
       forceUpdate()
     }, 1000)
-    
+    setHidden(true)
   }
 
   return (
@@ -34,7 +34,7 @@ const CommentForm = ({comments, selectedVideo, forceUpdate}) => {
       onSubmit={(event) => {
         submit(event);
       }}>
-        <button type="button" hidden={!hidden} onClick={()=>setHidden(!hidden)}>Add comment</button>
+        <button style={{"marginLeft":"32px", "backgroundColor":"lightblue" }} type="button" hidden={!hidden} onClick={()=>setHidden(!hidden)}>Add comment</button>
       <TextareaAutosize
       hidden={hidden}
         className='textArea'
@@ -42,6 +42,7 @@ const CommentForm = ({comments, selectedVideo, forceUpdate}) => {
         placeholder='Enter your Comment'
         style={{ width: 300 }}
         value={commentInput}
+        autoFocus
         onChange={(event) => {
           setCommentInput(event.target.value);
         }}
