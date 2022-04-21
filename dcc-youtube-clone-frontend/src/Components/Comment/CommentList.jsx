@@ -1,52 +1,27 @@
 import React from "react";
-import {
-  ThumbUpAlt,
-  ThumbUpOffAlt,
-  ThumbDownAlt,
-  ThumbDownOffAlt,
-} from "@mui/icons-material";
+
 import ReplyList from "../Reply/ReplyList";
+import LikeDislikeIcon from "../LikeDislikeIcon";
+import ReplyForm from "../Reply/ReplyForm"
 
 const CommentList = (props) => {
 
-  function likeDislikeIcon(obj) {
-    if (obj.like === true)
-      return (
-        <div>
-          <ThumbUpAlt />
-          <ThumbDownOffAlt />
-        </div>
-      );
-    else if (obj.dislike === true)
-      return (
-        <div>
-          <ThumbUpOffAlt />
-          <ThumbDownAlt />
-        </div>
-      );
-    else
-      return (
-        <div>
-          <ThumbUpOffAlt />
-          <ThumbDownOffAlt />
-        </div>
-      );
-  }
 
   return (
     <div>
+      {console.log("comments: "+props.comments)}
       <ul>
-        {props.comments.map((commentItem) => {
+        {props.comments.length && props.comments.map((comment) => {
           return (
-            <div key={commentItem.id}>
-                {console.log("comment.id is: "+ commentItem.id)}
+            <div key={comment.id}>
               <li>
-                {commentItem.comment}
+                {comment.body}
                 <br />
-                {likeDislikeIcon(commentItem)}
+                <LikeDislikeIcon obj={comment}/>
+                <ReplyForm id={comment.id}/>
               </li>
-              {/* {console.log(commentItem.replies)} */}
-              <ReplyList replies={commentItem.replies} likeDislikeIcon={likeDislikeIcon}/>
+              {/* {console.log(comment.replies)} */}
+              <ReplyList commentId={comment.id} />
             </div>
           );
         })}

@@ -1,39 +1,33 @@
 import React from "react";
-import {
-  ThumbUpAlt,
-  ThumbUpOffAlt,
-  ThumbDownAlt,
-  ThumbDownOffAlt,
-} from "@mui/icons-material";
 
-const ReplyList = ({replies, likeDislikeIcon}) => {
+import LikeDislikeIcon from "../LikeDislikeIcon";
+import { replies } from "../../dummyComments";
+
+const ReplyList = ({commentId}) => {
 
   
 //   console.log("replies length is: "+replies.length)
-  if (replies !== undefined && replies.length > 0) {
 
     return (
       <div>
         <ul>
           {replies.map((reply) => {
+            if(reply.commentId === commentId)
             return (
               <div key={reply.id}>
-                  {console.log("reply.id is: "+reply.id)}
                 <li>
-                  {reply.reply}
+                  {reply.body}
                   <br />
-                  {likeDislikeIcon(reply)}
+                  <LikeDislikeIcon obj={reply}/>
                 </li>
                 <ReplyList />
               </div>
             );
+            else return <></>
           })}
         </ul>
       </div>
     );
-  } else {
-    return <>{console.log("no replies")}</>;
-  }
-};
+  } 
 
 export default ReplyList;

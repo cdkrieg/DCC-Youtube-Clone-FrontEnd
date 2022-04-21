@@ -9,6 +9,7 @@ const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
     <div
       onClick={() => {
         setSelectedVideo(video);
+        console.log(video)
         navigate("/video");
       }}
       className='videoItem'>

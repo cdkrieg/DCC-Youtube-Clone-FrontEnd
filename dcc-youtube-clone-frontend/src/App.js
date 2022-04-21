@@ -17,11 +17,9 @@ function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
-  const commentList = [{id: 1, comment:"this is the first comment", like: false, dislike: false}, {id: 2, comment:"this is the second comment", like: false, dislike: true}]
-  // const [forYouVideos, setForYouVideos] = useState();
-
+ 
   useEffect(() => {
-    if (selectedVideo) console.log(selectedVideo);
+    
   }, [search, searchResult, selectedVideo]);
 
   return (
@@ -40,10 +38,8 @@ function App() {
             path='/'
             element={
               <div className='app-home'>
-                <h2>Home Page</h2>
-                <br/>
-                <hr/>
-                <h1>U-Toob</h1>
+
+                <h1>Welcome to U-Toob</h1>
               </div>
             }
           />
@@ -76,7 +72,7 @@ function App() {
                   )}
                 </Suspense>
                 <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
-                <Comment />
+                <Comment selectedVideo={selectedVideo}/>
               </div>
             }
           />
