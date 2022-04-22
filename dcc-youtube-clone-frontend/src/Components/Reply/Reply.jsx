@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
-import ReplyForm from "./ReplyForm";
-import ReplyList from "./ReplyList";
+import ReplyForm from "./ReplyForm/ReplyForm";
+import ReplyList from "./ReplyList/ReplyList";
 import Axios from "../Routes/RoutesAxios";
 
 const Reply = (props) => {

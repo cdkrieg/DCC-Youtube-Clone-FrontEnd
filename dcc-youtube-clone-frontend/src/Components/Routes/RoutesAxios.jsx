@@ -1,9 +1,6 @@
 import axios from 'axios';
+import BaseURL from '../BaseURL'
 
-
-
-const baseURl = 'http://localhost:3007/api/'
-//TODO: determine CRUD methods
  async function getYoutubeData(url){
      try {
          let result = await axios.get(url)
@@ -15,7 +12,7 @@ const baseURl = 'http://localhost:3007/api/'
 
  async function getComments(videoId){
      try {
-         let response = await axios.get(baseURl+"comments/?"+videoId)
+         let response = await axios.get(BaseURL.ServerBaseURL+"comments/?"+videoId)
          if(response){
              return response.data
          }
@@ -26,7 +23,7 @@ const baseURl = 'http://localhost:3007/api/'
 
  async function updateComments(id, obj){
     try {
-        let response = await axios.put(baseURl+"comments/"+id, obj)
+        let response = await axios.put(BaseURL.ServerBaseURL+"comments/"+id, obj)
         if(response){
             return response.data
            
@@ -37,7 +34,7 @@ const baseURl = 'http://localhost:3007/api/'
  }
  async function addComments(obj){
     try {
-        let response = await axios.post(baseURl+"comments", obj,{"content-type":"application/json"})
+        let response = await axios.post(BaseURL.ServerBaseURL+"comments", obj,{"content-type":"application/json"})
         if(response){
             return response.data
         }
@@ -48,7 +45,7 @@ const baseURl = 'http://localhost:3007/api/'
 
  async function getReplies(id){
     try {
-        let response = await axios.get(baseURl+"replies/?"+id)
+        let response = await axios.get(BaseURL.ServerBaseURL+"replies/?"+id)
         if(response){
             return response.data
         }
@@ -59,7 +56,7 @@ const baseURl = 'http://localhost:3007/api/'
 
 async function addReplies(obj){
     try {
-        let response = await axios.post(baseURl+"replies", obj,{"content-type":"application/json"})
+        let response = await axios.post(BaseURL.ServerBaseURL+"replies", obj,{"content-type":"application/json"})
         if(response){
             return response.data
         }

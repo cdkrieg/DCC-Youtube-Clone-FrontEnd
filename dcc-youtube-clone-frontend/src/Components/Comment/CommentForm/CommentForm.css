@@ -1,0 +1,7 @@
+.form-group > .text-area {
+    width: 300px;
+}
+.addCommentButton{
+    margin-left: 32px;
+    background-color: lightblue;
+}

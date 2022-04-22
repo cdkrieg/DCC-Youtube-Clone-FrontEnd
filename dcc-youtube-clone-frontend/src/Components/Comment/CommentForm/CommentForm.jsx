@@ -1,6 +1,7 @@
 import React, { useState, Error, ErrorBoundary } from "react";
 import { TextareaAutosize } from "@mui/material";
-import Axios from "../Routes/RoutesAxios";
+import Axios from "../../Routes/RoutesAxios";
+import './CommentForm.css'
 
 const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
   const [commentInput, setCommentInput] = useState();
@@ -27,7 +28,7 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
   }
 
   return (
-    <ErrorBoundary fallback={<Error>Could not load form to add comment</Error>}>
+    // <ErrorBoundary fallback={<Error>Could not load form to add comment</Error>}>
       <div
         className='form-group'
         id='commentForm'
@@ -35,8 +36,9 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
           submit(event);
         }}>
         <button
-          style={{ marginLeft: "32px", backgroundColor: "lightblue" }}
+         
           type='button'
+          className="addCommentButton"
           hidden={!hidden}
           onClick={() => setHidden(!hidden)}>
           Add comment
@@ -46,7 +48,6 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
           className='textArea'
           maxRows={3}
           placeholder='Enter your Comment'
-          style={{ width: 300 }}
           value={commentInput}
           autoFocus
           onChange={(event) => {
@@ -74,7 +75,7 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
           Cancel
         </button>
       </div>
-    </ErrorBoundary>
+    // </ErrorBoundary>
   );
 };
 

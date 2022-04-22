@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import Axios from "../Routes/RoutesAxios";
-import CommentForm from "./CommentForm";
-import CommentList from "../Comment/CommentList";
+import CommentForm from "./CommentForm/CommentForm";
+import CommentList from "./CommentList/CommentList";
 
 
 const Comment = ({ selectedVideo, setSelectedVideo }) => {

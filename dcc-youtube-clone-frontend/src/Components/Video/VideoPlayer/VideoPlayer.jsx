@@ -4,7 +4,7 @@ const VideoPlayer = (props) => {
   const source = `https://www.youtube.com/embed/${props.selectedVideo.id.videoId}`;
 
   return (
-    <ErrorBounday fallback={<Error>Error loading the VideoPlayer</Error>}>
+    // <ErrorBounday fallback={<Error>Error loading the VideoPlayer</Error>}>
       <div className='iFrame'>
         <h2>{props.selectedVideo.snippet.title}</h2>
         <iframe
@@ -17,7 +17,7 @@ const VideoPlayer = (props) => {
           allow='autoplay'
         />
       </div>
-    </ErrorBounday>
+    // </ErrorBounday>
   );
 };
 

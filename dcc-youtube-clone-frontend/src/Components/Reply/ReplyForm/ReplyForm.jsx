@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextareaAutosize } from "@mui/material";
-import Axios from "../Routes/RoutesAxios";
+import Axios from "../../Routes/RoutesAxios";
+import "./ReplyForm.css";
 
 const ReplyForm = (props) => {
   const [replyInput, setReplyInput] = useState();
@@ -8,20 +9,20 @@ const ReplyForm = (props) => {
 
   function submit(event) {
     event.preventDefault();
-    
+
     try {
       Axios.addReplies({
         commentId: props.commentId,
         body: replyInput,
-      })
+      });
     } catch (error) {
-      console.log("Error adding reply: "+error)
+      console.log("Error adding reply: " + error);
     }
-    setReplyInput("")
-    setTimeout(()=> {
-      props.forceUpdate()
-    }, 1000)
-    setHidden(true)
+    setReplyInput("");
+    setTimeout(() => {
+      props.forceUpdate();
+    }, 1000);
+    setHidden(true);
   }
 
   return (
@@ -31,15 +32,22 @@ const ReplyForm = (props) => {
       onSubmit={(event) => {
         submit(event);
       }}>
-        <button style={{"border":"none"}}
-        hidden={!hidden} type="button" value={hidden} onClick={()=>{setHidden(!hidden)}}>Reply</button>
+      <button
+        className='replyButton'
+        hidden={!hidden}
+        type='button'
+        value={hidden}
+        onClick={() => {
+          setHidden(!hidden);
+        }}>
+        Reply
+      </button>
       <TextareaAutosize
-      autoFocus
-      hidden={hidden}
+        autoFocus
+        hidden={hidden}
         className='textArea'
         maxRows={3}
         placeholder='Enter your REPLY'
-        style={{ width: 200 }}
         value={replyInput}
         onChange={(event) => {
           setReplyInput(event.target.value);
@@ -48,9 +56,23 @@ const ReplyForm = (props) => {
           if (event.key === "Enter") submit(event, props.id);
         }}
       />
-      <button hidden={hidden} type='submit' onClick={(event) => {
-        submit(event)}} >Submit</button>
-        <button hidden={hidden} type='button'onClick={()=>{setHidden(!hidden); setReplyInput("")}} >Cancel</button>
+      <button
+        hidden={hidden}
+        type='submit'
+        onClick={(event) => {
+          submit(event);
+        }}>
+        Submit
+      </button>
+      <button
+        hidden={hidden}
+        type='button'
+        onClick={() => {
+          setHidden(!hidden);
+          setReplyInput("");
+        }}>
+        Cancel
+      </button>
     </div>
   );
 };

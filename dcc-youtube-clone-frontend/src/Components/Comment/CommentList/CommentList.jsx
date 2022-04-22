@@ -1,6 +1,7 @@
 import React, {ErrorBoundary, Error} from "react"
-import Reply from "../Reply/Reply";
-import LikeDislikeIcon from "../LikeDislikeIcon";
+import Reply from "../../Reply/Reply";
+import LikeDislikeIcon from "../../LikeDislikeIcon";
+import './CommentList.css'
 
 
 const CommentList = (props) => {
@@ -12,7 +13,7 @@ const CommentList = (props) => {
 
   return (
     <div>
-      <ErrorBoundary fallback={<Error>Could not load comments</Error>}>
+      {/* <ErrorBoundary fallback={<Error>Could not load comments</Error>}> */}
       <ul>
   
         {props.comments.length &&
@@ -23,7 +24,7 @@ const CommentList = (props) => {
                   {comment.body}
                   <div
                     className='text-muted'
-                    style={{ fontSize: "10px", fontStyle: "italic" }}>
+                   >
                     {formatDate(comment.dateAdded)}
                   </div>{" "}
                   <LikeDislikeIcon
@@ -36,7 +37,7 @@ const CommentList = (props) => {
             );
           })}
       </ul>
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </div>
   );
 };

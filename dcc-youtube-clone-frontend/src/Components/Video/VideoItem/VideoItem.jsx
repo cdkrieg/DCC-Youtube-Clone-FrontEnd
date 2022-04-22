@@ -6,7 +6,7 @@ import "./VideoItem.css";
 const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
   const navigate = useNavigate();
   return (
-    <ErrorBounday fallback={<Error>Error loading VideoItem</Error>}>
+    // <ErrorBounday fallback={<Error>Error loading VideoItem</Error>}>
       <div
         onClick={() => {
           setSelectedVideo(video);
@@ -22,7 +22,7 @@ const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
           <div className='channelDetails'>{video.snippet.title}</div>
         </div>
       </div>
-    </ErrorBounday>
+    // </ErrorBounday>
   );
 };
 
