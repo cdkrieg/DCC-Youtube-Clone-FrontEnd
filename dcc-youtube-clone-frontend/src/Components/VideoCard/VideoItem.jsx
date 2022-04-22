@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ErrorBounday, Error } from "react";
 import { useNavigate } from "react-router";
 
 import "./VideoItem.css";
@@ -6,22 +6,23 @@ import "./VideoItem.css";
 const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
   const navigate = useNavigate();
   return (
-    <div
-      onClick={() => {
-        setSelectedVideo(video);
-        console.log(video)
-        navigate("/video");
-      }}
-      className='videoItem'>
-      <img
-        className='videoImg'
-        src={video.snippet.thumbnails.medium.url}
-        alt={video.snippet.description}
-      />
-      <div className='videoData'>
-        <div className='channelDetails'>{video.snippet.title}</div>
+    <ErrorBounday fallback={<Error>Error loading VideoItem</Error>}>
+      <div
+        onClick={() => {
+          setSelectedVideo(video);
+          navigate("/video");
+        }}
+        className='videoItem'>
+        <img
+          className='videoImg'
+          src={video.snippet.thumbnails.medium.url}
+          alt={video.snippet.description}
+        />
+        <div className='videoData'>
+          <div className='channelDetails'>{video.snippet.title}</div>
+        </div>
       </div>
-    </div>
+    </ErrorBounday>
   );
 };
 

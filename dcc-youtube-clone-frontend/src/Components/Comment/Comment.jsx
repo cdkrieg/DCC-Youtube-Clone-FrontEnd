@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import Axios from "../Routes/RoutesAxios";
 import CommentForm from "./CommentForm";
-import dummyComments from "../../dummyComments";
-
 import CommentList from "../Comment/CommentList";
+
 
 const Comment = ({ selectedVideo, setSelectedVideo }) => {
   const [returnedComments, setReturnedComments] = useState();

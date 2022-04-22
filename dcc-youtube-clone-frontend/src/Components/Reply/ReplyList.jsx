@@ -1,32 +1,31 @@
-import React from "react";
+import React, { ErrorBoundary, Error } from "react";
 
 import LikeDislikeIcon from "../LikeDislikeIcon";
-import { replies } from "../../dummyComments";
 
-const ReplyList = ({commentId}) => {
 
-  
-//   console.log("replies length is: "+replies.length)
+const ReplyList = (props) => {
 
     return (
       <div>
-        <ul>
-          {replies.map((reply) => {
-            if(reply.commentId === commentId)
+        <ErrorBoundary fallback={<Error>Could not load Replies</Error>}>
+      <ul>
+        {
+           props.replies.map((reply, index) => {
+            if(props.commentId === reply.commentId){
             return (
-              <div key={reply.id}>
-                <li>
+              <div key={reply._id}>
+                <li style={{"fontSize":"14px"}}>
                   {reply.body}
-                  <br />
-                  <LikeDislikeIcon obj={reply}/>
+                  <div className='text-muted' style={{"fontSize": "10px","fontStyle":"italic"}}>{reply.dateAdded}</div>
+                    {/* {" "}<LikeDislikeIcon obj={reply} forceUpdate={props.forceUpdate}/> */}
                 </li>
-                <ReplyList />
               </div>
             );
-            else return <></>
+             } else {return <></>} 
           })}
-        </ul>
-      </div>
+      </ul>
+      </ErrorBoundary>
+    </div>
     );
   } 
 

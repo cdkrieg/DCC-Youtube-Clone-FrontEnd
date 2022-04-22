@@ -6,7 +6,7 @@ import {
   ThumbUpOffAlt,
   ThumbUpAlt,
 } from "@mui/icons-material";
-import { comments } from "../dummyComments";
+
 
 const LikeDislikeIcon = (props) => {
     const [likeButton, setLikeButton]= useState(props.obj.like)
@@ -27,7 +27,6 @@ async function updateLikeDislike(obj){
             dislike: dislikeButton,
             replies: []
         })
-        console.log("Update complete")
         forceUpdate();
     } catch (error) {
         console.log("Error updating Like/Dislike: "+error)
@@ -40,31 +39,23 @@ async function updateLikeDislike(obj){
        setLikeButton(true);
       setDislikeButton(false);
       forceUpdate()
-      console.log(
-        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
-      );
+
     }
     if (button === "ThumbUpAlt") {
       setLikeButton(false)
       forceUpdate()
-      console.log(
-        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
-      );
+
     }
     if (button === "ThumbDownOffAlt") {
       setDislikeButton(true);
       setLikeButton(false);
       forceUpdate()
-      console.log(
-        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
-      );
+
     }
     if (button === "ThumbDownAlt") {
       setDislikeButton(false);
       forceUpdate()
-      console.log(
-        `Like is: ${likeButton} and dislike is: ${dislikeButton}`
-      );
+
     }
   }
 

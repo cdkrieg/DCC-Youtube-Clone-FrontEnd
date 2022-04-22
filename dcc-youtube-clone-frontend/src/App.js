@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, {
+  useState,
+  useEffect,
+  Suspense,
+  ErrorBoundary,
+  Error,
+} from "react";
 import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
@@ -17,10 +23,8 @@ function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
- 
-  useEffect(() => {
-    
-  }, [search, searchResult, selectedVideo]);
+
+  useEffect(() => {}, [search, searchResult, selectedVideo]);
 
   return (
     <div className='App'>
@@ -38,10 +42,13 @@ function App() {
             path='/'
             element={
               <div className='app-home'>
-                <div><h1>Welcome to U-Toob</h1></div>
-                
-                <div><h3>Click on the search bar above to begin your journey!</h3></div>
-                
+                <div>
+                  <h1>Welcome to U-Toob</h1>
+                </div>
+
+                <div>
+                  <h3>Click on the search bar above to begin your journey!</h3>
+                </div>
               </div>
             }
           />
@@ -50,31 +57,49 @@ function App() {
             path='/search'
             className='app-search'
             element={
-              <Suspense fallback={<Spinner />}>
-                {searchResult && (
-                  <VideoCard
-                    setSelectedVideo={setSelectedVideo}
-                    videos={searchResult.items}
-                  />
-                )}
-              </Suspense>
+              <ErrorBoundary
+                fallback={<Error>Error loading video cards</Error>}>
+                <Suspense fallback={<Spinner />}>
+                  {searchResult && (
+                    <VideoCard
+                      setSelectedVideo={setSelectedVideo}
+                      videos={searchResult.items}
+                    />
+                  )}
+                </Suspense>
+              </ErrorBoundary>
             }
           />
           <Route
             path='/video'
             element={
               <div className='app-video'>
-                <Suspense className="container-xsm" fallback={<Spinner />}>
-                  {searchResult && (
-                    <RelatedVideos
-                      selectedVideo={selectedVideo}
-                      setSelectedVideo={setSelectedVideo}
-                      videos={searchResult.items}
-                    />
-                  )}
-                </Suspense>
-                <VideoPlayer className="col-lg-5 mx-auto" selectedVideo={selectedVideo} />
-                <Comment id="comments" selectedVideo={selectedVideo} setSelectedVideo={setSelectedVideo}/>
+                <ErrorBoundary
+                  fallback={<Error>Error loading Related Videos</Error>}>
+                  <Suspense className='container-xsm' fallback={<Spinner />}>
+                    {searchResult && (
+                      <RelatedVideos
+                        selectedVideo={selectedVideo}
+                        setSelectedVideo={setSelectedVideo}
+                        videos={searchResult.items}
+                      />
+                    )}
+                  </Suspense>
+                </ErrorBoundary>
+                <ErrorBoundary fallback={<Error>Could not load Video from App</Error>}>
+                  <VideoPlayer
+                    className='col-lg-5 mx-auto'
+                    selectedVideo={selectedVideo}
+                  />
+                </ErrorBoundary>
+                <ErrorBoundary
+                  fallback={<Error>Could not load Comments Section</Error>}>
+                  <Comment
+                    id='comments'
+                    selectedVideo={selectedVideo}
+                    setSelectedVideo={setSelectedVideo}
+                  />
+                </ErrorBoundary>
               </div>
             }
           />
@@ -85,8 +110,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /*
-<Comments className='comments' /> */
-}

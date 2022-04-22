@@ -1,13 +1,27 @@
 import React, { useState } from "react";
 import { TextareaAutosize } from "@mui/material";
+import Axios from "../Routes/RoutesAxios";
 
 const ReplyForm = (props) => {
   const [replyInput, setReplyInput] = useState();
-  const [buttonValue, setButtonValue] = useState(true);
+  const [hidden, setHidden] = useState(true);
 
-  function submit(event,id) {
+  function submit(event) {
     event.preventDefault();
-
+    
+    try {
+      Axios.addReplies({
+        commentId: props.commentId,
+        body: replyInput,
+      })
+    } catch (error) {
+      console.log("Error adding reply: "+error)
+    }
+    setReplyInput("")
+    setTimeout(()=> {
+      props.forceUpdate()
+    }, 1000)
+    setHidden(true)
   }
 
   return (
@@ -18,10 +32,10 @@ const ReplyForm = (props) => {
         submit(event);
       }}>
         <button style={{"border":"none"}}
-        hidden={!buttonValue} type="button" value={buttonValue} onClick={()=>{setButtonValue(!buttonValue)}}>Reply</button>
+        hidden={!hidden} type="button" value={hidden} onClick={()=>{setHidden(!hidden)}}>Reply</button>
       <TextareaAutosize
       autoFocus
-      hidden={buttonValue}
+      hidden={hidden}
         className='textArea'
         maxRows={3}
         placeholder='Enter your REPLY'
@@ -34,7 +48,9 @@ const ReplyForm = (props) => {
           if (event.key === "Enter") submit(event, props.id);
         }}
       />
-      <button hidden={buttonValue} type='submit'>Submit</button>
+      <button hidden={hidden} type='submit' onClick={(event) => {
+        submit(event)}} >Submit</button>
+        <button hidden={hidden} type='button'onClick={()=>{setHidden(!hidden); setReplyInput("")}} >Cancel</button>
     </div>
   );
 };
