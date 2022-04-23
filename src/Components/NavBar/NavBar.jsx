@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import HomeIcon from '@mui/icons-material/Home';
 import "./NavBar.css";
 
 const NavBar = (props) => {
   return (
     <nav className='navBar' role='navigation'>
-
-        <h4>DCC U-Toob Clone</h4>
+        <h5>DCC U-Toob Clone</h5>
         
 
 
       <Link to='/' id='home'>
-        <label >Home</label>
+      <HomeIcon type="button" className="MuiIcon-Home" fontSize="large" />
       </Link>
       <SearchBar
         className='searchBar'

@@ -7,15 +7,17 @@
   top: 0;
   z-index: 999;
   background-color: aliceblue;
+  font-size: large;
 }
 
-.navBar > h4 {
+.navBar > h5 {
   padding-left: 2rem;
   font-weight: bold;
   font-style: italic;
   color: blue;
   width: 25%;
   text-shadow: gray;
+  margin-left: 10px;
 }
 #home {
   padding-right: 10px;
