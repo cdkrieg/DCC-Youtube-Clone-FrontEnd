@@ -1,6 +1,6 @@
 import React, { ErrorBoundary, Error } from "react";
 import "./ReplyList.css";
-import LikeDislikeIcon from "../../LikeDislikeIcon";
+import LikeDislikeIcon from "../../LikeDislikeIcon/LikeDislikeIcon";
 
 const ReplyList = (props) => {
   return (

@@ -6,19 +6,27 @@ import CommentList from "./CommentList/CommentList";
 
 
 const Comment = ({ selectedVideo, setSelectedVideo }) => {
-  const [returnedComments, setReturnedComments] = useState();
+  const [returnedComments, setReturnedComments] = useState([]);
   const [isLoading, setIsloading] = useState(true);
   const [update, setUpdate] = useState(false)
-  const forceUpdate = React.useCallback(()=> setUpdate(!update), [])
+  const forceUpdate = React.useCallback(()=> setUpdate(!update), [selectedVideo])
 
   useEffect(() => {
-    let result = getVideoComments(selectedVideo.id.videoId)
-      .then((result) => setReturnedComments(result))
-      .then(() => setIsloading(false));
+    getVideoComments(selectedVideo.id.videoId)
+      // console.log(`Returned comments are: ${returnedComments}`)
+      // console.log(`Selected Video ID is ${selectedVideo.id.videoId}`)
   }, [selectedVideo, update]);
 
   async function getVideoComments(videoId) {
     let comments = await Axios.getComments(videoId);
+    setTimeout(() => {
+      // console.log(comments)
+      if(comments===undefined){
+        comments=[]
+      }
+      setReturnedComments(comments)
+      setIsloading(false)
+    }, 50);
     return comments;
   }
   if (isLoading) {
@@ -32,7 +40,7 @@ const Comment = ({ selectedVideo, setSelectedVideo }) => {
     <div id="comments">
         <h4>Comments</h4>
       <CommentForm comments={returnedComments} selectedVideo={selectedVideo} forceUpdate={forceUpdate}/>
-      <CommentList comments={returnedComments} />
+      {returnedComments.length > 0 && returnedComments[0].videoId === selectedVideo.id.videoId && <CommentList comments={returnedComments} />}
     </div>
   );
 };

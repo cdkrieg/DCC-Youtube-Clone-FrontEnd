@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import SearchIcon from "@mui/icons-material/Search";
 import Axios from "../Routes/RoutesAxios";
+import BaseURL from "../BaseURL";
 
-import YouTubeBaseURL from "../BaseURL";
-import googleAPIKey from "../../config";
+
 import "./SearchBar.css";
 
 
@@ -14,11 +14,9 @@ const SearchBar = (props) => {
 
   async function submit(event) {
     event.preventDefault();
-    let searchString = YouTubeBaseURL+
-    'key='+googleAPIKey+
+    let searchString = BaseURL.YouTubeBaseURL+
     '&q='+searchText+
     '&maxResults='+8+
-    '&type=video'+
     '&part=snippet'
 
     try {

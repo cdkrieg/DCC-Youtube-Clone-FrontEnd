@@ -4,6 +4,7 @@ import BaseURL from '../BaseURL'
  async function getYoutubeData(url){
      try {
          let result = await axios.get(url)
+         console.log(result)
          return result.data
      } catch (error) {
          console.log('Error getting data from YoutTube')
@@ -12,7 +13,7 @@ import BaseURL from '../BaseURL'
 
  async function getComments(videoId){
      try {
-         let response = await axios.get(BaseURL.ServerBaseURL+"comments/?"+videoId)
+         let response = await axios.get(BaseURL.ServerBaseURL+"comments/"+videoId)
          if(response){
              return response.data
          }

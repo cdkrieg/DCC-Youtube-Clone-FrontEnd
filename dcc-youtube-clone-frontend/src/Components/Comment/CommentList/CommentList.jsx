@@ -1,6 +1,6 @@
 import React, {ErrorBoundary, Error} from "react"
 import Reply from "../../Reply/Reply";
-import LikeDislikeIcon from "../../LikeDislikeIcon";
+import LikeDislikeIcon from "../../LikeDislikeIcon/LikeDislikeIcon";
 import './CommentList.css'
 
 
@@ -16,7 +16,7 @@ const CommentList = (props) => {
       {/* <ErrorBoundary fallback={<Error>Could not load comments</Error>}> */}
       <ul>
   
-        {props.comments.length &&
+        {props.comments.length > 0 &&
           props.comments.map((comment) => {
             return (
               <div key={comment._id}>
@@ -27,7 +27,7 @@ const CommentList = (props) => {
                    >
                     {formatDate(comment.dateAdded)}
                   </div>{" "}
-                  <LikeDislikeIcon
+                  <LikeDislikeIcon id="icon"
                     obj={comment}
                     forceUpdate={props.forceUpdate}
                   />

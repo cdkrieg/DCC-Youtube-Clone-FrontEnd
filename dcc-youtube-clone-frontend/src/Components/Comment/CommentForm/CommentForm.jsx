@@ -23,7 +23,7 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
     setCommentInput("");
     setTimeout(() => {
       forceUpdate();
-    }, 1000);
+    }, 500);
     setHidden(true);
   }
 

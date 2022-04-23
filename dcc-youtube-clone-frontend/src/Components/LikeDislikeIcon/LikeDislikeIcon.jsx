@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Axios from "./Routes/RoutesAxios";
+import Axios from "../Routes/RoutesAxios";
 import {
   ThumbDownOffAlt,
   ThumbDownAlt,
   ThumbUpOffAlt,
   ThumbUpAlt,
 } from "@mui/icons-material";
-
+import './LikeDislikeIcon.css'
 
 const LikeDislikeIcon = (props) => {
     const [likeButton, setLikeButton]= useState(props.obj.like)
@@ -61,8 +61,9 @@ async function updateLikeDislike(obj){
 
   if (likeButton === true)
     return (
-      <div>
+      <div className="likeButton">
         <ThumbUpAlt
+        id="buttonLike"
           type='button'
           onClick={(event) => {
             changeLikeDislike(event,"ThumbUpAlt");
@@ -70,6 +71,7 @@ async function updateLikeDislike(obj){
         />
         <ThumbDownOffAlt
           type='button'
+          id="button"
           onClick={(event) => {
             changeLikeDislike(event, "ThumbDownOffAlt");
           }}
@@ -78,14 +80,17 @@ async function updateLikeDislike(obj){
     );
   else if (dislikeButton === true)
     return (
-      <div>
+      <div className="likeButton">
         <ThumbUpOffAlt
+        type='button'
+        id="button"
           onClick={(event) => {
             changeLikeDislike(event, "ThumbUpOffAlt");
           }}
         />
         <ThumbDownAlt
           type='button'
+          id="buttonDislike"
           onClick={(event) => {
             changeLikeDislike(event, "ThumbDownAlt");
           }}
@@ -94,15 +99,17 @@ async function updateLikeDislike(obj){
     );
   else
     return (
-      <div>
+      <div className="likeButton">
         <ThumbUpOffAlt
           type='button'
+          id="button"
           onClick={(event) => {
             changeLikeDislike(event, "ThumbUpOffAlt");
           }}
         />
         <ThumbDownOffAlt
           type='button'
+          id="button"
           onClick={(event) => {
             changeLikeDislike(event, "ThumbDownOffAlt");
           }}

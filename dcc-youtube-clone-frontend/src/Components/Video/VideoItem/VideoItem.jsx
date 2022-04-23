@@ -5,12 +5,19 @@ import "./VideoItem.css";
 
 const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
   const navigate = useNavigate();
+  setTimeout(() => {
+    console.log(video)
+  }, 200);
+  if(video.snippet)
   return (
     // <ErrorBounday fallback={<Error>Error loading VideoItem</Error>}>
       <div
-        onClick={() => {
+        onClick={() => {setTimeout(() => {
           setSelectedVideo(video);
           navigate("/video");
+          console.log(video)
+        }, 100);
+        
         }}
         className='videoItem'>
         <img

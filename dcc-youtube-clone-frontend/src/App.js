@@ -2,11 +2,10 @@ import React, {
   useState,
   useEffect,
   Suspense,
-  ErrorBoundary,
-  Error,
 } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import ErrorBoundary from './Components/ErrorBoundary'
 
 // import ForYou from "./Components/ForYou/ForYou";
 import Comment from "./Components/Comment/Comment.jsx";
@@ -24,7 +23,7 @@ function App() {
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
 
-  useEffect(() => {}, [search, searchResult, selectedVideo]);
+  useEffect(() => {console.log(searchResult)}, [search, searchResult, selectedVideo]);
 
   return (
     <div className='App'>
@@ -74,19 +73,18 @@ function App() {
             path='/video'
             element={
               <div className='app-video'>
-                {/* <ErrorBoundary
-                  fallback={<Error>Error loading Related Videos</Error>}> */}
+                <ErrorBoundary>
                   <Suspense className='container-xsm' fallback={<Spinner />}>
                     {searchResult && (
                       <RelatedVideos
                         selectedVideo={selectedVideo}
                         setSelectedVideo={setSelectedVideo}
-                        videos={searchResult.items}
+                        
                       />
                     )}
                   </Suspense>
-                {/* </ErrorBoundary> */}
-                {/* <ErrorBoundary fallback={<Error>Could not load Video from App</Error>}> */}
+                </ErrorBoundary>
+                <ErrorBoundary >
                   <VideoPlayer
                     className='col-lg-5 mx-auto'
                     selectedVideo={selectedVideo}
@@ -99,7 +97,7 @@ function App() {
                     selectedVideo={selectedVideo}
                     setSelectedVideo={setSelectedVideo}
                   />
-                {/* </ErrorBoundary> */}
+                </ErrorBoundary>
               </div>
             }
           />
