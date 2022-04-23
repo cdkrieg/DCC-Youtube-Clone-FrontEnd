@@ -16,7 +16,7 @@ const SearchBar = (props) => {
     event.preventDefault();
     let searchString = BaseURL.YouTubeBaseURL+
     '&q='+searchText+
-    '&maxResults='+8+
+    '&maxResults='+10+
     '&part=snippet'
 
     try {

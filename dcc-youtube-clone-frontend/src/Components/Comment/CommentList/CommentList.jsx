@@ -1,15 +1,17 @@
-import React, {ErrorBoundary, Error} from "react"
+import React from "react"
 import Reply from "../../Reply/Reply";
 import LikeDislikeIcon from "../../LikeDislikeIcon/LikeDislikeIcon";
 import './CommentList.css'
 
 
 const CommentList = (props) => {
+
   function formatDate(date) {
     let temp = new Date(date);
     temp = temp.toLocaleDateString();
     return temp;
   }
+
 
   return (
     <div>
@@ -20,7 +22,7 @@ const CommentList = (props) => {
           props.comments.map((comment) => {
             return (
               <div key={comment._id}>
-                <li style={{ fontSize: "14px" }}>
+                <li>
                   {comment.body}
                   <div
                     className='text-muted'

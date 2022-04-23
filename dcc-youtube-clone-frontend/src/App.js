@@ -84,9 +84,9 @@ function App() {
                     )}
                   </Suspense>
                 </ErrorBoundary>
-                <ErrorBoundary >
+                <ErrorBoundary className="app-video-comment">
                   <VideoPlayer
-                    className='col-lg-5 mx-auto'
+                  className="videoPlayer"
                     selectedVideo={selectedVideo}
                   />
                 {/* </ErrorBoundary> */}

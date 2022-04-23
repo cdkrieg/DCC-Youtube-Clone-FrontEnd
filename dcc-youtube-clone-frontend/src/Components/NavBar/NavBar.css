@@ -8,15 +8,14 @@
   z-index: 999;
   background-color: aliceblue;
 }
-.container {
-  color: blue;
-  width: 30%;
-}
 
-.container > h3 {
+.navBar > h4 {
   padding-left: 2rem;
   font-weight: bold;
   font-style: italic;
+  color: blue;
+  width: 25%;
+  text-shadow: gray;
 }
 #home {
   padding-right: 10px;
@@ -27,17 +26,15 @@
   text-align: center;
   align-items: center;
 }
-#home:hover {
+#home > label:hover {
   font-weight: bold;
-  background-color: rgb(233, 231, 231);
+  font-size: larger;
+  background-color: rgb(189, 229, 242);
 }
 .searchBar {
   align-items: left;
-  width: 25%;
   margin-right: 20%;
   height: 2rem;
+ width: 20%;
 }
-.youtubeicon{
-  color: blue;
-  margin-right: 5%;
-}
+

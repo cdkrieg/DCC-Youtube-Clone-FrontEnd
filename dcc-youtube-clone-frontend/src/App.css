@@ -6,8 +6,8 @@
 }
 .app-home {
   display: flex;
-width: 100vw;
-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   align-content: center;
   flex-direction: column;
   justify-content: center;
@@ -15,10 +15,11 @@ height: 100vh;
   background-color: rgb(47, 28, 28);
 }
 .app-home > h2,
-h1, h3 {
+h1,
+h3 {
   text-align: center;
   color: aliceblue;
-  margin: 25px
+  margin: 25px;
 }
 .app-search {
   display: flex;
@@ -27,48 +28,53 @@ h1, h3 {
 }
 
 .app-video {
-  display: flex;
+display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   z-index: 5;
-align-items: center;
-  max-width: 100vw;
-  max-height: 100vh;
-  justify-items: center;
+  align-items: center;
 }
 
-.sideBarLeft{
+.sideBarLeft {
   max-width: 20vw;
   max-height: 100vh;
   overflow-y: auto;
+  align-items: center;
 }
-.sideBarLeft > h5{
-text-align: center;
-color: blue;
-}
-.iFrame{
-  align-self: center;
-  justify-self: center;
+.sideBarLeft > h5 {
+  text-align: center;
+  color: blue;
 }
 
-.iFrame > h2{
+
+.iFrame > h2 {
   max-width: fit-content;
   margin-left: 1.5rem;
 }
-.iframe{
+.iframe {
   justify-content: center;
-  margin-left: 1.5rem;
+  margin-left: auto;
   margin-right: auto;
-  max-width: 50vw;
+  min-width: 42vw;
+  height: 50vh;
+  width:max-content;
 }
-#comments{
-  max-width: 30vw;
+
+#comments {
+  flex: 1;
+  max-width: max-content;
   max-height: 100vh;
   overflow: auto;
   margin-left: 20px;
-  ;
 }
-#comments > h4{
+#comments > h4 {
   text-align: center;
-  color: blue
-
+  color: blue;
+}
+.app-video-comment{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-basis: content;
 }

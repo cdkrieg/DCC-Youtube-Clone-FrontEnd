@@ -8,8 +8,8 @@ const VideoPlayer = (props) => {
       <div className='iFrame'>
         <h2>{props.selectedVideo.snippet.title}</h2>
         <iframe
-          width='700'
-          height='500'
+          // width='50vw'
+          // height='auto'
           title='YouTube Video'
           className='iframe'
           src={source}
