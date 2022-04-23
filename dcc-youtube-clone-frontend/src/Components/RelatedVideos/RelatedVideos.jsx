@@ -19,7 +19,7 @@ function RelatedVideos({ setSelectedVideo, selectedVideo }) {
         "relatedToVideoId=" +
         selectedVideo.id.videoId +
         "&maxResults=" +
-        8 +
+        20 +
         "&part=snippet";
       console.log(searchString);
       let result = await Axios.getYoutubeData(searchString);
