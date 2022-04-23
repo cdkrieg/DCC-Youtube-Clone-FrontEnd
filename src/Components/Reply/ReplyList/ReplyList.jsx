@@ -1,16 +1,14 @@
-import React, { ErrorBoundary, Error } from "react";
+import React from "react";
 import "./ReplyList.css";
-import LikeDislikeIcon from "../../LikeDislikeIcon/LikeDislikeIcon";
 
 const ReplyList = (props) => {
   return (
     <div>
-      {/* <ErrorBoundary fallback={<Error>Could not load Replies</Error>}> */}
       <ul>
         {props.replies.map((reply, index) => {
           if (props.commentId === reply.commentId) {
             return (
-              <div key={reply._id}>
+              <div key={`${reply.commentId}.${index}`}>
                 <li className='replyList'>
                   {reply.body}
                   <div
@@ -18,7 +16,6 @@ const ReplyList = (props) => {
                     style={{ fontSize: "10px", fontStyle: "italic" }}>
                     {reply.dateAdded}
                   </div>
-                  {/* {" "}<LikeDislikeIcon obj={reply} forceUpdate={props.forceUpdate}/> */}
                 </li>
               </div>
             );
@@ -27,7 +24,6 @@ const ReplyList = (props) => {
           }
         })}
       </ul>
-      {/* </ErrorBoundary> */}
     </div>
   );
 };

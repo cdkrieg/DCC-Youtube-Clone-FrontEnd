@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TextareaAutosize } from "@mui/material";
 import Axios from "../../Routes/RoutesAxios";
 import "./ReplyForm.css";
@@ -6,6 +6,13 @@ import "./ReplyForm.css";
 const ReplyForm = (props) => {
   const [replyInput, setReplyInput] = useState();
   const [hidden, setHidden] = useState(true);
+  const inputEl = useRef(null)
+
+  useEffect(() => {
+   if(hidden===false)
+   inputEl.current.focus()
+  }, [hidden])
+  
 
   function submit(event) {
     event.preventDefault();
@@ -46,6 +53,7 @@ const ReplyForm = (props) => {
         autoFocus
         hidden={hidden}
         className='textArea'
+        ref={inputEl}
         maxRows={3}
         placeholder='Enter your REPLY'
         value={replyInput}

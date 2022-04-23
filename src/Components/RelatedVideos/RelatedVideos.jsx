@@ -5,14 +5,12 @@ import BaseURL from "../BaseURL";
 
 function RelatedVideos({ setSelectedVideo, selectedVideo }) {
   const [videos, setVideos] = useState();
-  let count = 0
 
   useEffect(() => {
     getRelated();
   }, [selectedVideo]);
 
   async function getRelated() {
-    console.log(`videoId is ${selectedVideo.id.videoId}`);
     try {
       let searchString =
         BaseURL.YouTubeBaseURL +
@@ -21,9 +19,7 @@ function RelatedVideos({ setSelectedVideo, selectedVideo }) {
         "&maxResults=" +
         20 +
         "&part=snippet";
-      console.log(searchString);
       let result = await Axios.getYoutubeData(searchString);
-      console.log(result);
       setVideos(result.items);
       return result;
     } catch (error) {

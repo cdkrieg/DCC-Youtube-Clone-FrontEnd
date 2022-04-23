@@ -23,7 +23,7 @@ function App() {
   const [searchResult, setSearchResult] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
 
-  useEffect(() => {console.log(searchResult)}, [search, searchResult, selectedVideo]);
+  useEffect(() => {}, [search, searchResult, selectedVideo]);
 
   return (
     <div className='App'>

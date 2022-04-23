@@ -13,14 +13,12 @@ const Comment = ({ selectedVideo, setSelectedVideo }) => {
 
   useEffect(() => {
     getVideoComments(selectedVideo.id.videoId)
-      // console.log(`Returned comments are: ${returnedComments}`)
-      // console.log(`Selected Video ID is ${selectedVideo.id.videoId}`)
+
   }, [selectedVideo, update]);
 
   async function getVideoComments(videoId) {
     let comments = await Axios.getComments(videoId);
     setTimeout(() => {
-      // console.log(comments)
       if(comments===undefined){
         comments=[]
       }

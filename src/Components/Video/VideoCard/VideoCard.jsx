@@ -1,4 +1,4 @@
-import React, { ErrorBounday, Error } from "react";
+import React from "react";
 
 import VideoItem from "../VideoItem/VideoItem";
 
@@ -6,7 +6,6 @@ import "./VideoCard.css";
 
 const VideoCard = ({ videos, setSelectedVideo, selectedVideo }) => {
   if (Array.isArray(videos)) {
-    console.log(videos);
 
       const renderedVideos = videos.map((video) => {
         return (

@@ -1,11 +1,16 @@
-import React, { useState, Error, ErrorBoundary } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { TextareaAutosize } from "@mui/material";
 import Axios from "../../Routes/RoutesAxios";
-import './CommentForm.css'
+import "./CommentForm.css";
 
 const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
   const [commentInput, setCommentInput] = useState();
   const [hidden, setHidden] = useState(true);
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    if (hidden === false) inputEl.current.focus();
+  }, [hidden]);
 
   function submit(event) {
     event.preventDefault();
@@ -28,54 +33,51 @@ const CommentForm = ({ comments, selectedVideo, forceUpdate }) => {
   }
 
   return (
-    // <ErrorBoundary fallback={<Error>Could not load form to add comment</Error>}>
-      <div
-        className='form-group'
-        id='commentForm'
-        onSubmit={(event) => {
+    <div
+      className='form-group'
+      id='commentForm'
+      onSubmit={(event) => {
+        submit(event);
+      }}>
+      <button
+        type='button'
+        className='addCommentButton'
+        hidden={!hidden}
+        onClick={() => setHidden(!hidden)}>
+        Add comment
+      </button>
+      <TextareaAutosize
+        hidden={hidden}
+        className='textArea'
+        maxRows={3}
+        placeholder='Enter your Comment'
+        value={commentInput}
+        ref={inputEl}
+        onChange={(event) => {
+          setCommentInput(event.target.value);
+        }}
+        onKeyUp={(event) => {
+          if (event.key === "Enter") submit(event);
+        }}
+      />
+      <button
+        hidden={hidden}
+        type='submit'
+        onClick={(event) => {
           submit(event);
         }}>
-        <button
-         
-          type='button'
-          className="addCommentButton"
-          hidden={!hidden}
-          onClick={() => setHidden(!hidden)}>
-          Add comment
-        </button>
-        <TextareaAutosize
-          hidden={hidden}
-          className='textArea'
-          maxRows={3}
-          placeholder='Enter your Comment'
-          value={commentInput}
-          autoFocus
-          onChange={(event) => {
-            setCommentInput(event.target.value);
-          }}
-          onKeyUp={(event) => {
-            if (event.key === "Enter") submit(event);
-          }}
-        />
-        <button
-          hidden={hidden}
-          type='submit'
-          onClick={(event) => {
-            submit(event);
-          }}>
-          Submit
-        </button>
-        <button
-          hidden={hidden}
-          type='button'
-          onClick={() => {
-            setHidden(!hidden);
-            setCommentInput("");
-          }}>
-          Cancel
-        </button>
-      </div>
-    // </ErrorBoundary>
+        Submit
+      </button>
+      <button
+        hidden={hidden}
+        type='button'
+        onClick={() => {
+          setHidden(!hidden);
+          setCommentInput("");
+        }}>
+        Cancel
+      </button>
+    </div>
   );
 };
 
