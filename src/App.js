@@ -11,6 +11,7 @@ import ErrorBoundary from './Components/ErrorBoundary'
 import Comment from "./Components/Comment/Comment.jsx";
 import VideoPlayer from "./Components/Video/VideoPlayer/VideoPlayer";
 import NavBar from "./Components/NavBar/NavBar";
+import useLocalStorageValue from "./Components/useLocalStorage";
 import "./App.css";
 
 const VideoCard = React.lazy(() => import("./Components/Video/VideoCard/VideoCard"));
@@ -20,10 +21,10 @@ const RelatedVideos = React.lazy(() =>
 
 function App() {
   const [search, setSearch] = useState();
-  const [searchResult, setSearchResult] = useState();
-  const [selectedVideo, setSelectedVideo] = useState();
+  const [searchResult, setSearchResult] = useLocalStorageValue();
+  const [selectedVideo, setSelectedVideo] = useLocalStorageValue()
 
-  useEffect(() => {}, [search, searchResult, selectedVideo]);
+  useEffect(() => {if(selectedVideo===undefined)setSelectedVideo(JSON.parse(window.localStorage.getItem('selectedVideo')))}, [search, searchResult, selectedVideo]);
 
   return (
     <div className='App'>
