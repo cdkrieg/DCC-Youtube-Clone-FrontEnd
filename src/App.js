@@ -1,11 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-} from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import ErrorBoundary from './Components/ErrorBoundary'
+import ErrorBoundary from "./Components/ErrorBoundary";
 
 // import ForYou from "./Components/ForYou/ForYou";
 import Comment from "./Components/Comment/Comment.jsx";
@@ -14,7 +10,9 @@ import NavBar from "./Components/NavBar/NavBar";
 import useLocalStorageValue from "./Components/useLocalStorage";
 import "./App.css";
 
-const VideoCard = React.lazy(() => import("./Components/Video/VideoCard/VideoCard"));
+const VideoCard = React.lazy(() =>
+  import("./Components/Video/VideoCard/VideoCard")
+);
 const RelatedVideos = React.lazy(() =>
   import("./Components/RelatedVideos/RelatedVideos")
 );
@@ -22,9 +20,14 @@ const RelatedVideos = React.lazy(() =>
 function App() {
   const [search, setSearch] = useState();
   const [searchResult, setSearchResult] = useLocalStorageValue();
-  const [selectedVideo, setSelectedVideo] = useLocalStorageValue()
+  const [selectedVideo, setSelectedVideo] = useLocalStorageValue();
 
-  useEffect(() => {if(selectedVideo===undefined)setSelectedVideo(JSON.parse(window.localStorage.getItem('selectedVideo')))}, [search, searchResult, selectedVideo]);
+  useEffect(() => {
+    if (selectedVideo === undefined)
+      setSelectedVideo(
+        JSON.parse(window.localStorage.getItem("selectedVideo"))
+      );
+  }, [search, searchResult, selectedVideo]);
 
   return (
     <div className='App'>
@@ -57,48 +60,45 @@ function App() {
             path='/search'
             className='app-search'
             element={
-              // <ErrorBoundary
-                // fallback={<Error>Error loading video cards</Error>}>
-                <Suspense fallback={<Spinner />}>
-                  {searchResult && (
-                    <VideoCard
-                      setSelectedVideo={setSelectedVideo}
-                      videos={searchResult.items}
-                    />
-                  )}
-                </Suspense>
-              // </ErrorBoundary>
+              <Suspense fallback={<Spinner />}>
+                {searchResult && (
+                  <VideoCard
+                    setSelectedVideo={setSelectedVideo}
+                    videos={searchResult.items}
+                  />
+                )}
+              </Suspense>
             }
           />
           <Route
             path='/video'
             element={
               <div className='app-video'>
+                <div className="app-relatedVideos">
                 <ErrorBoundary>
-                  <Suspense className='container-xsm' fallback={<Spinner />}>
+                  <Suspense fallback={<Spinner />}>
                     {searchResult && (
                       <RelatedVideos
                         selectedVideo={selectedVideo}
                         setSelectedVideo={setSelectedVideo}
-                        
                       />
                     )}
                   </Suspense>
                 </ErrorBoundary>
-                <ErrorBoundary className="app-video-comment">
+                </div>
+                <div className="app-videoPlayer-comment">
+                <ErrorBoundary>
                   <VideoPlayer
-                  className="videoPlayer"
+                    className='videoPlayer'
                     selectedVideo={selectedVideo}
                   />
-                {/* </ErrorBoundary> */}
-                {/* <ErrorBoundary
-                  fallback={<Error>Could not load Comments Section</Error>}> */}
                   <Comment
-                    id='comments'
+                    className='comments'
                     selectedVideo={selectedVideo}
                     setSelectedVideo={setSelectedVideo}
                   />
                 </ErrorBoundary>
+                </div>
               </div>
             }
           />

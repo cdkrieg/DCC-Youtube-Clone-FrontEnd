@@ -29,25 +29,26 @@ h3 {
 }
 
 .app-video {
-display: flex;
-  flex-direction: column;
+  display: flex;
+  width: 100vw;
   flex-wrap: wrap;
+  flex-direction: row;
   gap: 1rem;
   z-index: 5;
-  align-items: center;
+  justify-items: center;
 }
 
-.sideBarLeft {
+.relatedVideos {
+  max-height: 200vh;
   max-width: 20vw;
-  max-height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   align-items: center;
+  margin-top: 10px;
 }
-.sideBarLeft > h5 {
+.relatedVideos > h5 {
   text-align: center;
   color: blue;
 }
-
 
 .iFrame > h2 {
   max-width: fit-content;
@@ -59,23 +60,87 @@ display: flex;
   margin-right: auto;
   min-width: 42vw;
   height: 50vh;
-  width:max-content;
 }
 
-#comments {
-  flex: 1;
-  max-width: max-content;
+
+.comments {
+  min-width: 20vw;
+  max-width: 40vw;
+  min-width: 20vw;
   max-height: 100vh;
   overflow: auto;
   margin-left: 20px;
 }
-#comments > h4 {
+.comments > h4 {
   text-align: center;
   color: blue;
 }
-.app-video-comment{
+.app-videoPlayer-comment {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  flex-basis: content;
+ flex-flow: column wrap;
+}
+
+@media only screen and (max-width: 420px) and (orientation: portrait){
+  .relatedVideos {
+    height: 350px;
+    max-width: 100vw;
+    overflow-y: unset;
+  }
+  .relatedVideos > h5 {
+    text-align: center;
+  }
+  .app-video {
+    flex-direction: column;
+    justify-items: flex-start;
+  }
+
+  .app-videoPlayer-comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    max-height: fit-content;
+    flex-wrap: nowrap;
+    flex: 1;
+    overflow-y: scroll;
+    margin-left: 10px;
+  }
+  .iframe {
+    align-items: center;
+    margin-left: 20px;
+    margin-right: auto;
+    min-width: 42vw;
+    height: 30vh;
+  }
+}
+  @media only screen and (max-width: 900px) and (min-width: 421px) and (orientation: portrait){
+    .relatedVideos {
+      height: 350px;
+      max-width: 100vw;
+      overflow-y: unset;
+    }
+    .relatedVideos > h5 {
+      text-align: center;
+    }
+    .app-videoPlayer-comment {
+      display: flex;
+      flex-direction: column;
+      max-width: 100vw;
+      max-height: min-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .iframe {
+      align-self: center;
+      margin-left: auto;
+      margin-right: auto;
+      min-width: 60vw;
+      height: 30vh;
+    }
+    .comments{
+      display: flex;
+      overflow-y: scroll;
+      max-height: 30vh;
+      max-width: 100vw;
+      flex-wrap: nowrap;
+    }
 }

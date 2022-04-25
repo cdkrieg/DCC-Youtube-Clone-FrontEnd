@@ -1,10 +1,18 @@
-.videoCard{
-    /* flex: .9; */
-    background-color: rgb(245, 247, 250);
-    padding: 10px 10px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
-    justify-content: center;
+.videoCard {
+  /* flex: .9; */
+  background-color: rgb(245, 247, 250);
+  padding: 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  justify-content: center;
+}
+@media only screen and (max-width: 900px) and (orientation: portrait){
+  .videoCard {
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    margin-left: 20px;
+    max-width: 100vw;
+  }
 }
 

@@ -28,9 +28,11 @@ function RelatedVideos({ setSelectedVideo, selectedVideo }) {
   }
     return (
     
-      <div className='sideBarLeft'>
+      <div className="relatedVideos">
         <h5>Related Videos</h5>
+        <div className="related-videoCard">
         <VideoCard setSelectedVideo={setSelectedVideo} videos={videos} />
+        </div>
       </div>
      
     );
