@@ -5,14 +5,14 @@ import "./VideoItem.css";
 
 const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
   const navigate = useNavigate();
-  if(video.snippet)
-  return (
+  if (video.snippet)
+    return (
       <div
-        onClick={() => {setTimeout(() => {
-          setSelectedVideo(video);
-          navigate("/video");
-        }, 100);
-        
+        onClick={() => {
+          setTimeout(() => {
+            setSelectedVideo(video);
+            navigate("/video");
+          }, 100);
         }}
         className='videoItem'>
         <img
@@ -20,11 +20,9 @@ const VideoItem = ({ video, setSelectedVideo, selectedVideo }) => {
           src={video.snippet.thumbnails.medium.url}
           alt={video.snippet.description}
         />
-        <div className='videoData'>
-          <div className='channelDetails'>{video.snippet.title}</div>
-        </div>
+        <div className='videoData'>{video.snippet.title}</div>
       </div>
-  );
+    );
 };
 
 export default VideoItem;

@@ -74,30 +74,30 @@ function App() {
             path='/video'
             element={
               <div className='app-video'>
-                <div className="app-relatedVideos">
-                <ErrorBoundary>
-                  <Suspense fallback={<Spinner />}>
-                    {searchResult && (
-                      <RelatedVideos
-                        selectedVideo={selectedVideo}
-                        setSelectedVideo={setSelectedVideo}
-                      />
-                    )}
-                  </Suspense>
-                </ErrorBoundary>
+                <div className='app-relatedVideos'>
+                  <ErrorBoundary>
+                    <Suspense fallback={<Spinner />}>
+                      {searchResult && (
+                        <RelatedVideos
+                          selectedVideo={selectedVideo}
+                          setSelectedVideo={setSelectedVideo}
+                        />
+                      )}
+                    </Suspense>
+                  </ErrorBoundary>
                 </div>
-                <div className="app-videoPlayer-comment">
-                <ErrorBoundary>
-                  <VideoPlayer
-                    className='videoPlayer'
-                    selectedVideo={selectedVideo}
-                  />
-                  <Comment
-                    className='comments'
-                    selectedVideo={selectedVideo}
-                    setSelectedVideo={setSelectedVideo}
-                  />
-                </ErrorBoundary>
+                <div className='app-videoPlayer-comment'>
+                  <ErrorBoundary>
+                    <VideoPlayer
+                      className='videoPlayer'
+                      selectedVideo={selectedVideo}
+                    />
+                    <Comment
+                      className='comments'
+                      selectedVideo={selectedVideo}
+                      setSelectedVideo={setSelectedVideo}
+                    />
+                  </ErrorBoundary>
                 </div>
               </div>
             }

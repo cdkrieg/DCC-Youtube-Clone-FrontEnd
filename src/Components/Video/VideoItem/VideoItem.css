@@ -1,29 +1,50 @@
-
-
-.videoItem{
+.videoItem {
+  display: flex;
+  flex-wrap: wrap;
+  height: 250px;
+  width: 250px;
+}
+.videoImg {
+  height: 150px;
+  width: 250px;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.videoData {
+  padding: 10px;
+  margin: 10px;
+  font-size: 12px;
+  max-width: 200px;
+  align-self: center;
+}
+.videoItem:hover {
+  border: 1px solid lightgray;
+  background-color: lightgray;
+}
+@media only screen and (max-width: 600px) {
+}
+@media only screen and (max-width: 900px) and (min-width: 700px) and (orientation: landscape) {
+  .videoItem {
     display: flex;
     flex-wrap: wrap;
-    height: 250px;
-    width: 250px;
-}
-.videoImg{
     height: 150px;
-    width: 250px;
-    margin: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.videoData{
-    padding: 10px;
-    margin: 10px;
+    width: 200px;
+  }
+  .videoImg {
+    height: 100px;
+    width: 200px;
+    margin: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .videoData {
+    margin: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
     font-size: 12px;
     max-width: 200px;
     align-self: center;
-} 
-.videoItem:hover{
-    border: 1px solid lightgray;
-    background-color: lightgray;
-}
-@media only screen and (max-width: 600px) {
-
+  }
 }

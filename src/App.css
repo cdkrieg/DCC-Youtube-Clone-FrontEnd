@@ -35,7 +35,6 @@ h3 {
   flex-direction: row;
   gap: 1rem;
   z-index: 5;
-
 }
 
 .relatedVideos {
@@ -64,13 +63,13 @@ h3 {
 
 .app-videoPlayer-comment {
   display: flex;
- flex-flow: column wrap;
+  flex-flow: column wrap;
 
- margin-left: clamp(20px,15%,20vw);
- margin-right: auto;
+  margin-left: clamp(20px, 15%, 20vw);
+  margin-right: auto;
 }
 
-@media only screen and (max-width: 420px) and (orientation: portrait){
+@media only screen and (max-width: 420px) and (orientation: portrait) {
   .relatedVideos {
     height: 350px;
     max-width: 100vw;
@@ -92,7 +91,7 @@ h3 {
     flex-wrap: nowrap;
     flex: 1;
     overflow-y: scroll;
-    margin-left: clamp(20px,15%,20vw);
+    margin-left: clamp(20px, 8%, 20vw);
   }
   .iframe {
     align-items: center;
@@ -102,28 +101,80 @@ h3 {
     height: 30vh;
   }
 }
-  @media only screen and (max-width: 900px) and (min-width: 421px) and (orientation: portrait){
-    .relatedVideos {
-      height: 350px;
-      max-width: 100vw;
-      overflow-y: unset;
-    }
-    .relatedVideos > h5 {
-      text-align: center;
-    }
-    .app-videoPlayer-comment {
-      display: flex;
-      flex-direction: column;
-      max-width: 100vw;
-      max-height: min-content;
-      margin-left: clamp(20px,15%,20vw);
-      margin-right: auto;
-    }
-    .iframe {
-      align-self: center;
-      margin-left: auto;
-      margin-right: auto;
-      min-width: 60vw;
-      height: 30vh;
-    }
+@media only screen and (max-width: 900px) and (min-width: 421px) and (orientation: portrait) {
+  .relatedVideos {
+    height: 350px;
+    max-width: 100vw;
+    overflow-y: unset;
+  }
+  .relatedVideos > h5 {
+    text-align: center;
+  }
+  .app-videoPlayer-comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    max-height: min-content;
+    margin-left: clamp(20px, 15%, 20vw);
+    margin-right: auto;
+  }
+  .iframe {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 60vw;
+    height: 30vh;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 421px) and (orientation: landscape) {
+  .relatedVideos {
+    height: 350px;
+    max-width: 20vw;
+    overflow-y: unset;
+    margin-left: 20px;
+  }
+  .relatedVideos > h5 {
+    text-align: center;
+  }
+  .app-videoPlayer-comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    max-height: min-content;
+    margin-left: clamp(20px, 10%, 20vw);
+    margin-right: auto;
+  }
+  .iframe {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 55vw;
+    height: 45vh;
+  }
+}
+@media only screen and (max-width: 900px) and (min-width: 700px) and (orientation: landscape) {
+  .relatedVideos {
+    height: 100vh;
+    max-width: 20vw;
+    margin-left: 10px;
+    overflow-y: scroll;
+  }
+  .relatedVideos > h5 {
+    text-align: center;
+  }
+  .app-videoPlayer-comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 60vw;
+    max-height: min-content;
+    margin-left: clamp(5px, 8%, 10vw);
+    margin-right: auto;
+  }
+  .iframe {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 45vw;
+    height: 50vh;
+  }
 }
