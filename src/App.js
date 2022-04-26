@@ -52,6 +52,7 @@ function App() {
                 <div>
                   <h3>Click on the search bar above to begin your journey!</h3>
                 </div>
+                <iframe autoPlay className="app-iframe" width="424" height="238" src="https://www.youtube.com/embed/V65uAHzofbg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             }
           />

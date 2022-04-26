@@ -22,6 +22,10 @@ h3 {
   color: aliceblue;
   margin: 25px;
 }
+.app-iframe{
+  margin-left: auto;
+  margin-right: auto;
+}
 .app-search {
   display: flex;
   flex: 1;
