@@ -3,6 +3,7 @@ import { Spinner } from "react-bootstrap";
 import Axios from "../Routes/RoutesAxios";
 import CommentForm from "./CommentForm/CommentForm";
 import CommentList from "./CommentList/CommentList";
+import './Comment.css'
 
 
 const Comment = ({ selectedVideo, setSelectedVideo }) => {

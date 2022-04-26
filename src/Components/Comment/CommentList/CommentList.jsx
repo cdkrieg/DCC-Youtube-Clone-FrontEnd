@@ -11,7 +11,7 @@ const CommentList = (props) => {
   }
 
   return (
-    <div>
+    <div className="comments">
       <ul>
         {props.comments.length > 0 &&
           props.comments.map((comment) => {
@@ -31,7 +31,7 @@ const CommentList = (props) => {
                 </li>
               </div>
             );
-          })}
+          }).reverse()}
       </ul>
     </div>
   );
